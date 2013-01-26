@@ -24,16 +24,15 @@ class PhpRedmonController extends Controller
         $monitoring =  new \Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring($redis);
         $infos = $monitoring->GetStat();
         
-        echo("<br>");echo("<br>");echo("<br>");echo("<br>");echo("<br>");echo("<br>");echo("<br>");echo("<br>");
         
-        
-        var_dump($infos['Server']);
         $ret = $monitoring->Showlog();
         $client_list = $monitoring->ClientList();
-        echo("<br>");echo("<br>");echo("<br>");echo("<br>");
-        var_dump($client_list);
+  
+     
         $monitoring->GetInfoClient();
      
-        return array('Server'=>$infos['Server'],'client_list' => $client_list);
+        return array('Server'=>$infos['Server'],'Clients'=>$infos['Clients'],'Memory'=>$infos['Memory'],
+             'Persistence' => $infos['Persistence'],'Stats'=>$infos['Stats'],'Replication'=>$infos['Replication'],
+            'CPU'=>$infos['CPU'],'client_list' => $client_list);
     }
 }

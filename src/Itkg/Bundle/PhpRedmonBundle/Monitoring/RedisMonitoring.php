@@ -41,15 +41,7 @@ class RedisMonitoring
       $cmdSet = $this->redis->createCommand('info');
       
       $cmdSetReply = $this->redis->executeCommand($cmdSet);
-      $cmdSetReplyClean = array();
-      $cmdSetReplyClean['Server'] = $this->CleanKeys($cmdSetReply['Server']);
-      $cmdSetReplyClean['Clients'] = $this->CleanKeys($cmdSetReply['Clients']);
-      $cmdSetReplyClean['Memory'] = $this->CleanKeys($cmdSetReply['Memory']);
-      $cmdSetReplyClean['Replication'] = $this->CleanKeys($cmdSetReply['Replication']);
-      $cmdSetReplyClean['CPU'] = $this->CleanKeys($cmdSetReply['CPU']);
-      $cmdSetReplyClean['Persistence'] = $this->CleanKeys($cmdSetReply['Persistence']);
-      $cmdSetReplyClean['Stats'] = $this->CleanKeys($cmdSetReply['Stats']);
-      $cmdSetReplyClean['Keyspace'] = $this->CleanKeys($cmdSetReply['Keyspace']);
+     
       
       return $cmdSetReply;
         
@@ -60,7 +52,6 @@ class RedisMonitoring
       $cmdSet = $this->redis->createCommand('info',array('clients'));
       
       $cmdSetReply = $this->redis->executeCommand($cmdSet);
-      $cmdSetReplyClean = $this->CleanKeys($cmdSetReply['Clients']);
       return $cmdSetReply;
         
     }
@@ -96,17 +87,6 @@ class RedisMonitoring
  
     }
     
-    private function CleanKeys($arrayToClean)
-    {
-        
-        $CleanArray =  array();
-        $toReplace = array('_','-');
-        foreach ($arrayToClean as $key => $value) {
-            
-            $CleanArray[str_replace('_','',$key)] = $value;
-        }
-        
-        return $CleanArray;
-    }
+   
     
 }
