@@ -41,8 +41,72 @@ class RedisMonitoring
       $cmdSet = $this->redis->createCommand('info');
       
       $cmdSetReply = $this->redis->executeCommand($cmdSet);
-       var_dump($cmdSetReply);
+      $cmdSetReplyClean = array();
+      $cmdSetReplyClean['Server'] = $this->CleanKeys($cmdSetReply['Server']);
+      $cmdSetReplyClean['Clients'] = $this->CleanKeys($cmdSetReply['Clients']);
+      $cmdSetReplyClean['Memory'] = $this->CleanKeys($cmdSetReply['Memory']);
+      $cmdSetReplyClean['Replication'] = $this->CleanKeys($cmdSetReply['Replication']);
+      $cmdSetReplyClean['CPU'] = $this->CleanKeys($cmdSetReply['CPU']);
+      $cmdSetReplyClean['Persistence'] = $this->CleanKeys($cmdSetReply['Persistence']);
+      $cmdSetReplyClean['Stats'] = $this->CleanKeys($cmdSetReply['Stats']);
+      $cmdSetReplyClean['Keyspace'] = $this->CleanKeys($cmdSetReply['Keyspace']);
+      
+      return $cmdSetReply;
         
+    }
+    
+    public function GetInfoClient() 
+    {
+      $cmdSet = $this->redis->createCommand('info',array('clients'));
+      
+      $cmdSetReply = $this->redis->executeCommand($cmdSet);
+      $cmdSetReplyClean = $this->CleanKeys($cmdSetReply['Clients']);
+      return $cmdSetReply;
+        
+    }
+    
+    /**
+     * Showlog
+     * 
+     * @return array 
+     * 
+     */
+    
+    public function Showlog()
+    {
+      $cmdSet = $this->redis->createCommand('slowlog',array('get', '10'));
+      
+      $cmdSetReply = $this->redis->executeCommand($cmdSet);
+      
+      return $cmdSetReply;
+        
+    }
+    /**
+     * ClientList
+     * 
+     * @return array 
+     * 
+     */
+    public function ClientList()
+    {
+        
+      $cmdSet = $this->redis->createCommand('client',array('list'));
+      $cmdSetReply = $this->redis->executeCommand($cmdSet);
+      return $cmdSetReply;
+ 
+    }
+    
+    private function CleanKeys($arrayToClean)
+    {
+        
+        $CleanArray =  array();
+        $toReplace = array('_','-');
+        foreach ($arrayToClean as $key => $value) {
+            
+            $CleanArray[str_replace('_','',$key)] = $value;
+        }
+        
+        return $CleanArray;
     }
     
 }

@@ -7,7 +7,7 @@ namespace Itkg\Bundle\PhpRedmonBundle\Redis\Predis;
 /**
  * Client
  */
-class Client extends \Predis\Client implements \Itkg\Bundle\PhpRedmonBundle\Redis\RedisInterface
+class Client extends \Predis\Client
 {
     /**
      * Calls session_write_close() to fix bug a bug in PHP < 5.3.3

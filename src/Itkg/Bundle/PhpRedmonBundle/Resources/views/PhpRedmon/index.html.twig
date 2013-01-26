@@ -32,7 +32,44 @@
     </div>
 
     <div class="container-fluid">
-
+            <div class="span4">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Infos:</th>
+                    </thead>
+                   {% for item in Server %}
+                    <tr>
+                        <td>{{item}}</td>
+                        
+                    </tr>
+               
+                   {% endfor %}
+                </table>
+            </div>
+            <div class="span8">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Adresse :</th>
+                        <th>Temps de connexion</th>
+                        <th>Temps d'inactivité</th>
+                        <th>db actuel</th>
+                        <th>Nbr de channel</th>
+                        <th>qbuf</th>
+                        <th>last command</th>
+                    </thead>
+                {% for client in client_list %}
+                <tr>
+                    <td>{{client.addr}}</td>
+                    <td>{{client.age}}</td>
+                    <td>{{client.idle}}</td>
+                    <td>{{client.db}}</td>
+                    <td>{{client.sub}}</td>
+                    <td>{{client.qbuf}}</td>
+                    <td>{{client.cmd}}</td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div>
       
     </div> <!-- /container -->
 {% block javascript %}
