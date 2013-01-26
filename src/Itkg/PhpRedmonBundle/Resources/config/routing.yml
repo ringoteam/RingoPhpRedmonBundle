@@ -1,0 +1,27 @@
+itkg_phpredmon_instances:
+    pattern:   /instances
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:index }
+
+itkg_phpredmon_instance_new:
+    pattern:   /instance/new
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:new }
+
+itkg_phpredmon_instance_create:
+    pattern:   /instance/create
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:create }
+    requirements:
+        _method:  POST
+        
+itkg_phpredmon_instance_edit:
+    pattern:   /instance/edit/{id}
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:edit }
+    
+itkg_phpredmon_instance_update:
+    pattern:   /instance/update/{id}
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:update }
+    requirements:
+        _method:  POST
+        
+itkg_phpredmon_instance_delete:
+    pattern:   /instance/delete/{id}
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:index }
