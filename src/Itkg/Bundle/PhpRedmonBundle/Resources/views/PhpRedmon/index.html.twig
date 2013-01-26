@@ -280,23 +280,17 @@
             <div class="span7">
                 <table class="table table-striped">
                     <thead>
-                        <th>Adresse :</th>
-                        <th>Temps de connexion</th>
-                        <th>Temps d'inactivité</th>
-                        <th>db actuel</th>
-                        <th>Nbr de channel</th>
-                        <th>qbuf</th>
-                        <th>last command</th>
+                        <th>DB :</th>
+                       <th>number of keys :</th>
+                       <th>number of keys with an expiration</th>
                     </thead>
-                {% for client in client_list %}
+                {% for key,space in keyspace %}
                 <tr>
-                    <td>{{client.addr}}</td>
-                    <td>{{client.age}}</td>
-                    <td>{{client.idle}}</td>
-                    <td>{{client.db}}</td>
-                    <td>{{client.sub}}</td>
-                    <td>{{client.qbuf}}</td>
-                    <td>{{client.cmd}}</td>
+                    {% for key,item in space %}
+                    <td>{{key}}</td>
+                    <td>{{item.keys}}</td>
+                    <td>{{item.expires}}</td>
+                    {% endfor %}
                 </tr>
                 {% endfor %}
                 </table>

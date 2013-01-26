@@ -11,10 +11,10 @@ use Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client;
 class PhpRedmonController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/phpredmon")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
         
         $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');
@@ -25,14 +25,15 @@ class PhpRedmonController extends Controller
         $infos = $monitoring->GetStat();
         
         
-        $ret = $monitoring->Showlog();
+        $SlowLog = $monitoring->GetSlowLog();
         $client_list = $monitoring->ClientList();
   
-     
+        $keySpace = $monitoring->Getkeyspace();
+   
         $monitoring->GetInfoClient();
      
         return array('Server'=>$infos['Server'],'Clients'=>$infos['Clients'],'Memory'=>$infos['Memory'],
              'Persistence' => $infos['Persistence'],'Stats'=>$infos['Stats'],'Replication'=>$infos['Replication'],
-            'CPU'=>$infos['CPU'],'client_list' => $client_list);
+            'CPU'=>$infos['CPU'],'keyspace'=>$keySpace,'slowLog'=>$SlowLog);
     }
 }

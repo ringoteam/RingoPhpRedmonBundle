@@ -56,6 +56,14 @@ class RedisMonitoring
         
     }
     
+    public function Getkeyspace()
+    {
+         $cmdSet = $this->redis->createCommand('info',array('keyspace'));
+         $cmdSetReply = $this->redis->executeCommand($cmdSet);
+         return $cmdSetReply;
+        
+    }
+    
     /**
      * Showlog
      * 
@@ -63,9 +71,9 @@ class RedisMonitoring
      * 
      */
     
-    public function Showlog()
+    public function GetSlowLog()
     {
-      $cmdSet = $this->redis->createCommand('slowlog',array('get', '10'));
+      $cmdSet = $this->redis->createCommand('slowlog',array('get', '20'));
       
       $cmdSetReply = $this->redis->executeCommand($cmdSet);
       
