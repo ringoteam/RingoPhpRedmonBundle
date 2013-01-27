@@ -7,8 +7,8 @@
 
     </div>
     <div class="span3">
-      <div class="well well-large">
-          <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}"><img class="pull-right" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/><strong>Ajouter une instance</strong></a>
+      <div class="well well-large add_link">
+          <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}"><img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/><strong>Ajouter une instance</strong></a>
       </div>
       <div class="accordion" id="accordion2">
             {% include 'ItkgPhpRedmonBundle:Dash:_widget_administration.html.twig' with {'instance': instance} %}

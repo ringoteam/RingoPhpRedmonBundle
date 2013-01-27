@@ -6,6 +6,9 @@ a.accordion-toggle, .black {
     color: black !important;
 }
 
+.add_link a strong {
+    padding-left: 10px;
+}
 .accordion-heading .accordion-toggle {
     display: block;
     padding: 0;
