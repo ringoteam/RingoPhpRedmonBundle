@@ -3,7 +3,45 @@
 {% block main %}
 <div class="container-fluid">
         <div class="span12"><br/><br/><br><br/></div>
-            <div class="span5">
+        <div class="span5">
+        <!-- info -->
+        <div class="span5">
+        <ul class="breadcrumb">
+            <li>Info</li>
+        </ul>
+                <table class="table table-striped">
+                 <tr>
+                       <td>Version : </td> <td>{{Server.redis_version}}</td>    
+                 </tr> 
+                  <tr>
+                       <td>Mode : </td> <td>{{Server.redis_mode}}</td>    
+                    </tr>
+                <tr>
+                       <td>Uptime (day) : </td> <td>{{Server.uptime_in_days}}</td>  
+                    </tr>
+                    <tr>
+                       <td>Nbr : </td> <td>{{Clients.connected_clients}}</td>    
+                    </tr> 
+                     <tr>
+                       <td>Number of clients pending on a blocking call : </td> <td>{{Clients.blocked_clients}}</td>  
+                    </tr>
+                 <tr>
+                       <td>Used memory : </td> <td>{{Memory.used_memory_human}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Used memory peak: </td> <td>{{Memory.used_memory_peak_human}}</td>    
+                    </tr>
+                    <tr>
+                       <td>Total number of connections accepted by the server : </td> <td>{{Stats.total_connections_received}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Total number of commands processed by the server : </td> <td>{{Stats.total_commands_processed}}</td> 
+                     </tr>
+                </table>
+        
+        </div>
+        
+        <div class="span5">
                 <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
@@ -16,7 +54,8 @@
           <table class="table table-striped">
                     <tr>
                        <td>Version : </td> <td>{{Server.redis_version}}</td>    
-                    <tr> 
+                    </tr> 
+                    <tr>
                        <td>Mode : </td> <td>{{Server.redis_mode}}</td>    
                     </tr>
                     <tr>
@@ -247,7 +286,13 @@
   </div>
 </div>
 </div>
-            <div class="span7">
+</div>
+<div class="span7">           
+         <!-- db -->
+         <div class="span7">
+               <ul class="breadcrumb">
+                    <li>Databases</li>
+                </ul>
                 <table class="table table-striped">
                     <thead>
                         <th>DB :</th>
@@ -264,7 +309,9 @@
                 </tr>
                 {% endfor %}
                 </table>
-            </div>
+            </div>    
+        <div class="span7"></div>
       
-    </div> <!-- /container -->
+    </div>
+</div><!-- /container -->
 {% endblock %}
