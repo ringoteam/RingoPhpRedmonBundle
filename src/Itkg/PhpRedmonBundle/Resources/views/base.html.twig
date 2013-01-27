@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Php Redmon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/itkgphpredmon/css/bootstrap.min.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('/bundles/itkgphpredmon/css/bootstrap-responsive.css') }}" rel="stylesheet">    
+    <link rel="stylesheet" href="{{ asset('/bundles/itkgphpredmon/css/style.css') }}" rel="stylesheet">
+
+
+{% endblock %}
+      </head>
+ 
+    <body>
+    {% block nav %}
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+              <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="">PhpRedmon</a>
+                <div class="nav-collapse collapse">
+                  <ul class="nav">
+                    <li class="active"><a href="">Dashboard</a></li>
+                    <li><a href="">Console</a></li>
+                    <li><a href="{{ path('itkg_phpredmon_instances') }}">Configuration</a></li>
+                    <li><a href="">Administration</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+    <div class="container">
+        {% block main %}
+
+        {% endblock%}   
+    </div>
+{% block javascript %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{ asset('/bundles/itkgphpredmon/js/bootstrap.min.js ') }}"></script>
+{% endblock %}
+  </body>
+</html>

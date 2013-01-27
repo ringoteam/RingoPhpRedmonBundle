@@ -1,5 +1,11 @@
-<form action="{{ path('itkg_phpredmon_instance_update', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+{% extends 'ItkgPhpRedmonBundle::base.html.twig' %}
 
-    <input type="submit" value="Valider" />
-</form>
+{% block main %}
+    <h2>Modifier une instance Redis</h2>
+    <form action="{{ path('itkg_phpredmon_instance_update', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+
+        <input type="submit" value="Valider" />
+    </form>
+{% endblock %}    
+

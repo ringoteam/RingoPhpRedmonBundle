@@ -17,7 +17,6 @@ class CrudController extends Controller
     public function indexAction()
     {
         $instances = $this->getManager()->findAll();
-        var_dump($instances);
         return $this->render(
             $this->getTemplatePath().'index.html.twig',
             array(
