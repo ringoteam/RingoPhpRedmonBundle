@@ -20,27 +20,64 @@ class EntitySerializer
     
     public function find($id)
     {
+        $key = $this->getHash().$id;
+        if($this->getFileManager()->has($key)) {
+            return $this->_loadEntity($key);
+        }
         
+        return null;
     }
     
     public function persist($object)
     {
+        if(!$object->getId()) {
+            $object->setId($this->_getNextId());
+        }
+        $key = $this->getHash().$object->getId();
+        $content = serialize($object);
         
+        $this->getFileManager()->write($key, $content, true);
     }
     
-    protected function getNextId()
+    protected function _getNextId()
     {
+        $keys = $this->getFileManager()->keys();
+        $ids = array();
+        foreach($keys as $key) {
+            if(preg_match('/^'.$this->getHash().'/', $key)) {
+                $ids[] = str_replace($this->getHash(), '', $maxKey);
+            }
+        }
+        if(empty($ids)) {
+            return 1;
+        }
         
+        $maxId = max($ids);
+        
+        return $maxId + 1;
     }
     
     public function findAll()
     {
+        $keys = $this->getFileManager()->keys();
+        $entities = array();
+        if(is_array($keys)) {
+            foreach($keys as $key) {
+                if(preg_match('/^'.$this->getHash().'/', $key)) {
+                    $entities[] = $this->_loadEntity($key);
+                }
+            }
+        }
         
+        return $entities;
     }
     
     public function remove($object)
     {
-        
+        $key = $this->getHash().$object->getId();
+        if($this->getFileManager()->has($key)) {
+            $this->getFileManager()->delete($key);
+        }
     }
     
     public function getFileManager()
@@ -74,4 +111,10 @@ class EntitySerializer
         $this->hash = $hash;
     }
     
+    protected function _loadEntity($key)
+    {
+        $content = $this->getFileManager()->read($key);
+        
+        return unserialize($content);
+    }
 }

@@ -1,5 +1,5 @@
-<form action="{{ path('itkg_phpredmon_edit') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('itkg_phpredmon_instance_update', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="Valider" />
+    <input type="submit" value="Valider" />
 </form>

@@ -3,11 +3,8 @@
 namespace Itkg\PhpRedmonBundle\Controller;
 
 use Itkg\PhpRedmonBundle\Form\InstanceType;
-use Itkg\PhpRedmonBundle\Model\Instance;
-use Itkg\PhpRedmonBundle\Manager\InstanceManager;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Classe CrudController
@@ -19,9 +16,13 @@ class CrudController extends Controller
     
     public function indexAction()
     {
+        $instances = $this->getManager()->findAll();
+        var_dump($instances);
         return $this->render(
             $this->getTemplatePath().'index.html.twig',
-            array()
+            array(
+                'instances' => $instances
+            )
         );
     }
 
@@ -37,7 +38,29 @@ class CrudController extends Controller
 
     public function createAction()
     {
+        $form = $this->getForm();
+
+        $request = $this->get('request');
+        if ('POST' == $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                
+                $this->getManager()->create($form->getData());
+                $this->get('session')->setFlash('notice', 'Instance Redis ajouté avec succès');
+
+                return new RedirectResponse($this->generateUrl('itkg_phpredmon_instances'));
+            }else {
+                $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
+
+            }
+        }
         
+        return $this->render(
+            $this->getTemplatePath().'new.html.twig',
+            array(
+                'form' => $this->getForm()->createView()
+            )
+        );
     }
     
     public function editAction($id)
@@ -46,17 +69,37 @@ class CrudController extends Controller
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',
             array(
-                'form' => $this->getForm($this->getManager()->find($id))->createView()
+                'form' => $this->getForm($this->getManager()->find($id))->createView(),
+                'id'   => $id
             )
         );
     }
     
     public function updateAction($id)
     {
+        $form = $this->getForm();
+
+        $request = $this->get('request');
+        if ('POST' == $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->getManager()->create($form->getData());
+                $this->get('session')->setFlash('notice', 'Instance Redis modifié avec succès');
+
+                return new RedirectResponse($this->generateUrl('itkg_phpredmon_instances'));
+            }else {
+                $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
+
+            }
+        }
+        
         return $this->render(
-            $this->getTemplatePath().'index.html.twig',
-            array()
+            $this->getTemplatePath().'edit.html.twig',
+            array(
+                'form' => $this->getForm()->createView()
+            )
         );
+        
     }
     
     public function deleteAction($id)
