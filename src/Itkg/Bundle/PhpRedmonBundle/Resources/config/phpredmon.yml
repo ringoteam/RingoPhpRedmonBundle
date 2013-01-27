@@ -1,0 +1,7 @@
+server : 
+    local :
+      name : 'localhost'
+      port :  3669
+    zapo :
+      name : 'zapo the great'
+      port : 3669

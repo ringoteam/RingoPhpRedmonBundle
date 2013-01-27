@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring;
 use Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client;
+use Itkg\Bundle\PhpRedmonBundle\Config\PhpRedmonConfig;
 
 class PhpRedmonController extends Controller
 {
@@ -59,4 +60,15 @@ class PhpRedmonController extends Controller
          return array('configlist'=>$configlist);
          
     }
+    /**
+     * @Route("/phpredmon/admin",name="administration")
+     * @Template()
+     */
+    public function adminAction()
+    {
+        $config = new \Itkg\Bundle\PhpRedmonBundle\Config\PhpRedmonConfig();
+        var_dump($config->GetValue());
+        return array(' ');
+    }
+    
 }
