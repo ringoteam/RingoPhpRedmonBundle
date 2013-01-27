@@ -47,14 +47,7 @@ class RedisMonitoring
         
     }
     
-    public function GetInfoClient() 
-    {
-      $cmdSet = $this->redis->createCommand('info',array('clients'));
-      
-      $cmdSetReply = $this->redis->executeCommand($cmdSet);
-      return $cmdSetReply;
-        
-    }
+   
     
     public function Getkeyspace()
     {
@@ -65,7 +58,7 @@ class RedisMonitoring
     }
     
     /**
-     * Showlog
+     * slowLog
      * 
      * @return array 
      * 
@@ -86,7 +79,7 @@ class RedisMonitoring
      * @return array 
      * 
      */
-    public function ClientList()
+    public function GetClientList()
     {
         
       $cmdSet = $this->redis->createCommand('client',array('list'));
@@ -95,6 +88,21 @@ class RedisMonitoring
  
     }
     
+    
+     /**
+     * ClientList
+     * 
+     * @return array 
+     * 
+     */
+    public function GetConfig()
+    {
+        
+      $cmdSet = $this->redis->createCommand('config',array('get','*'));
+      $cmdSetReply = $this->redis->executeCommand($cmdSet);
+      return $cmdSetReply;
+ 
+    }
    
     
 }
