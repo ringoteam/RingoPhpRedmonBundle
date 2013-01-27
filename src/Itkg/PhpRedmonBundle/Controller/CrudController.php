@@ -4,14 +4,14 @@ namespace Itkg\PhpRedmonBundle\Controller;
 
 use Itkg\PhpRedmonBundle\Form\InstanceType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Itkg\PhpRedmonBundle\Controller\Controller as BaseController;
 
 /**
  * Classe CrudController
  *
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
-class CrudController extends Controller
+class CrudController extends BaseController
 {
     
     public function indexAction()
@@ -45,9 +45,9 @@ class CrudController extends Controller
             if ($form->isValid()) {
                 
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('notice', 'Instance Redis ajouté avec succès');
+                $this->get('session')->setFlash('success', 'Instance Redis ajouté avec succès');
 
-                return new RedirectResponse($this->generateUrl('itkg_phpredmon_instances'));
+                return new RedirectResponse($this->generateUrl('itkg_php_redmon_instances'));
             }else {
                 $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
 
@@ -85,7 +85,7 @@ class CrudController extends Controller
                 $this->getManager()->create($form->getData());
                 $this->get('session')->setFlash('notice', 'Instance Redis modifié avec succès');
 
-                return new RedirectResponse($this->generateUrl('itkg_phpredmon_instances'));
+                return new RedirectResponse($this->generateUrl('itkg_php_redmon_instances'));
             }else {
                 $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
 
@@ -122,10 +122,5 @@ class CrudController extends Controller
         }
         
         return $this->createForm(new InstanceType(), $instance);
-    }
-    
-    public function getManager()
-    {
-        return $this->get('itkg_phpredmon.instance_manager');
     }
 }

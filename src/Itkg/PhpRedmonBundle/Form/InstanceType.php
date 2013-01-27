@@ -23,7 +23,7 @@ class InstanceType extends AbstractType
 
     public function getName()
     {
-        return 'itkg_phpredmon_instance';
+        return 'itkg_php_redmon_instance';
     }
 }
 

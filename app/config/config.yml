@@ -46,3 +46,5 @@ knp_gaufrette:
         phpredmon:
             adapter:    phpredmon
             alias:      phpredmon_filesystem
+            
+itkg_php_redmon: ~

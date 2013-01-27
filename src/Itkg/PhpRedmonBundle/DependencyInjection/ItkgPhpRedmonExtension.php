@@ -19,6 +19,7 @@ class ItkgPhpRedmonExtension extends Extension
          $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
          $loader->load('serializer.xml');
          $loader->load('manager.xml');
+         $loader->load('worker.xml');
     }
 
     public function getAlias()

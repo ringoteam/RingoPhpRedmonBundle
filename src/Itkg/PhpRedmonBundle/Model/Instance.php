@@ -16,6 +16,7 @@ class Instance
     protected $host;
     protected $databases;
     protected $logs;
+    protected $working;
     
     public function addDatabase(Database $database)
     {
@@ -55,6 +56,17 @@ class Instance
         
         return $this->databases;
     }
+
+    public function getDatabase($id)
+    {
+        foreach($this->getDatabases() as $database) {
+            if($database->getId() == $id) {
+                return $database;
+            }
+        }
+        
+        return null;
+    }
     
     public function getLogs()
     {
@@ -63,6 +75,11 @@ class Instance
         }
         
         return $this->logs;
+    }
+    
+    public function isWorking()
+    {
+        return $this->working;
     }
     
     public function setId($id)
@@ -89,9 +106,14 @@ class Instance
     {
         $this->databases = $databases;
     }
-    
+ 
     public function setLogs(ArrayCollection $logs)
     {
         $this->logs = $logs;
+    }
+    
+    public function setWorking($working) 
+    {
+        $this->working = $working;
     }
 }

@@ -2,7 +2,7 @@
 
 {% block main %}
     <h2>Créer une instance Redis</h2>
-    <form action="{{ path('itkg_phpredmon_instance_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('itkg_php_redmon_instance_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
 
         <input class="btn" type="submit" value="Valider" />
