@@ -15,7 +15,7 @@ class Database
     
     public function getId()
     {
-        return $this->Id;
+        return $this->id;
     }
     
     public function setId($id)

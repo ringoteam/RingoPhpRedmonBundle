@@ -20,7 +20,13 @@ class Instance
     
     public function addDatabase(Database $database)
     {
+        $database->setId($this->getDatabases()->count());
         $this->getDatabases()->add($database);
+    }
+    
+    public function removeDatabase(Database $database) 
+    {
+        $this->getDatabases()->remove($database);
     }
     
     public function addLog(Log $log)
@@ -53,7 +59,6 @@ class Instance
         if($this->databases == null) {
             $this->databases = new ArrayCollection();
         }
-        
         return $this->databases;
     }
 

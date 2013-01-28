@@ -45,7 +45,7 @@ class EntitySerializer
         $ids = array();
         foreach($keys as $key) {
             if(preg_match('/^'.$this->getHash().'/', $key)) {
-                $ids[] = str_replace($this->getHash(), '', $maxKey);
+                $ids[] = str_replace($this->getHash(), '', $key);
             }
         }
         if(empty($ids)) {

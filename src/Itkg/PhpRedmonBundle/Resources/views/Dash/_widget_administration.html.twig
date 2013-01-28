@@ -9,13 +9,14 @@
       <div class="accordion-inner">
         <ul>
             {% for database in instance.getDatabases %}
-                <li>
-                    Base {{ database.name }}<a href="{{ path('itkg_php_redmon_admin_flushdb', {'id': database.id}) }}">
-                    <button class="btn">Flush DB</button></a>
+                <li class="list_db">
+                    <span class="label_db">Base {{ database.name }}<a class="link_button" href="{{ path('itkg_php_redmon_admin_flushdb', {'id': database.id}) }}">
+                    <button class="btn pull-right" >Flush DB</button></a>
+                    </span>
                 </li>
             {% endfor %}
         </ul>
-        <a href="{{ path('itkg_php_redmon_admin_flushall') }}">Supprimer toutes les données</a>
+        <a class="pull-right black underline" href="{{ path('itkg_php_redmon_admin_flushall') }}">Supprimer toutes les données</a>
       </div>
     </div>
   </div>

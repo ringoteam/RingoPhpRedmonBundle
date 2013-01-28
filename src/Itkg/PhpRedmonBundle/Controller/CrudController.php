@@ -30,7 +30,8 @@ class CrudController extends BaseController
         return $this->render(
             $this->getTemplatePath().'new.html.twig',
             array(
-                'form' => $this->getForm()->createView()
+                'form' => $this->getForm()->createView(),
+                'errors' => array()
             )
         );
     }
@@ -57,19 +58,22 @@ class CrudController extends BaseController
         return $this->render(
             $this->getTemplatePath().'new.html.twig',
             array(
-                'form' => $this->getForm()->createView()
+                'form' => $form->createView(),
+                'erros' => $form->getErrors()
             )
         );
     }
     
     public function editAction($id)
     {
-        
+        $instance = $this->getManager()->find($id);
+        $form = $this->getForm($instance);
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',
             array(
-                'form' => $this->getForm($this->getManager()->find($id))->createView(),
-                'id'   => $id
+                'form' => $form->createView(),
+                'id'   => $id,
+                'errors' => array()
             )
         );
     }
@@ -95,7 +99,8 @@ class CrudController extends BaseController
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',
             array(
-                'form' => $this->getForm()->createView()
+                'form' => $form->createView(),
+                'errors' => $form->getErrors()
             )
         );
         
