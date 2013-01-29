@@ -59,7 +59,7 @@ class CrudController extends BaseController
             $this->getTemplatePath().'new.html.twig',
             array(
                 'form' => $form->createView(),
-                'erros' => $form->getErrors()
+                'errors' => $form->getErrors()
             )
         );
     }
@@ -122,7 +122,6 @@ class CrudController extends BaseController
     public function getForm($instance = null)
     {
         if($instance == null) {
-          
             $instance = $this->getManager()->createNew();
         }
         

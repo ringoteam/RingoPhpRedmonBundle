@@ -1,6 +1,6 @@
 <?php
 
-namespace Itkg\Bundle\PhpRedmonBundle\DependencyInjection;
+namespace Itkg\PhpRedmonBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -20,7 +20,14 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('itkg_php_redmon');
-
+        $rootNode
+            ->children()
+                ->arrayNode('log')
+                    ->children()
+                        ->scalarNode('days')->isRequired()->end()
+                    ->end()
+                ->end()
+            ->end();
        
         return $treeBuilder;
     }

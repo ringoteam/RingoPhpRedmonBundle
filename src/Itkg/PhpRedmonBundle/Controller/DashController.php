@@ -16,6 +16,8 @@ class DashController extends BaseController
     public function indexAction()
     {
         if($instance = $this->getCurrentInstance()) {
+            // Update of instance to have last logs created
+            $instance = $this->getManager->find($instance->getId());
             $worker = $this->getWorker()->setInstance($instance);
             $worker->ping();
             $worker->getInfos();
@@ -31,6 +33,7 @@ class DashController extends BaseController
         return $this->render(
             $this->getTemplatePath().'choose.html.twig',
             array(
+                'instances' => $this->getManager()->findAll()
             )
          );
     }

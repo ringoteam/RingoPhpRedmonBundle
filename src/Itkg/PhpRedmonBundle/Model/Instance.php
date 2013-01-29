@@ -34,6 +34,11 @@ class Instance
         $this->getLogs()->add($log);
     }
     
+    public function removeLog(Log $log)
+    {
+        $this->getLogs()->remove($log);
+    }
+    
     public function getId()
     {
         return $this->id;

@@ -20,6 +20,6 @@ class ConsoleController extends BaseController
     
     protected function getTemplatePath()
     {
-        return 'ItkgPhpRedmonBundle:Admin:';
+        return 'ItkgPhpRedmonBundle:Console:';
     }
 }

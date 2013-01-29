@@ -47,4 +47,6 @@ knp_gaufrette:
             adapter:    phpredmon
             alias:      phpredmon_filesystem
             
-itkg_php_redmon: ~
+itkg_php_redmon: 
+    log:
+        days: 30
