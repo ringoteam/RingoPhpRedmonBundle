@@ -1,0 +1,31 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+} 
+
+
+
+.accordion-inner ul li.list_db {
+    clear: both;
+    line-height: 20px;
+    padding-bottom: 15px;
+}
+
+a.underline {
+    text-decoration: underline;
+}
+a.accordion-toggle, .black {
+    color: black !important;
+}
+
+.add_link a strong {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.accordion-heading .accordion-toggle {
+    display: block;
+    padding: 0;
+}
+
+.accordion-heading .accordion-toggle .caret {
+    margin-top: 5px;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="itkg_php_redmon.entity_manager" class="Itkg\PhpRedmonBundle\Serializer\EntitySerializer" public="false">
+            <argument type="service" id="gaufrette.phpredmon_filesystem" />
+        </service>
+    </services>
+</container>

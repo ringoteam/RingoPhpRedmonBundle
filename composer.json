@@ -16,6 +16,10 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
+<<<<<<< HEAD
+=======
+	"knplabs/knp-gaufrette-bundle": "*",
+>>>>>>> pascal
         "predis/predis": "dev-master"
     },
     "scripts": {
