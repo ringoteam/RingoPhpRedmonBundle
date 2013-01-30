@@ -19,6 +19,7 @@ class PhpRedmonController extends Controller
     {
         
         $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
+        //$redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://10.255.252.219:6379');        
         $monitoring =  new \Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring($redis);
         $infos = $monitoring->GetStat();
         
