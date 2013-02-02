@@ -30,9 +30,10 @@ class Controller extends BaseController
     {
         $instance = $this->getRequest()->getSession()->get('instance');
         
-        // Update of instance to have last logs created
-        $instance = $this->getManager()->find($instance->getId());
-        
+        if($instance) {
+            // Update of instance to have last logs created
+            $instance = $this->getManager()->find($instance->getId());
+        }
         return $instance;
         
     }

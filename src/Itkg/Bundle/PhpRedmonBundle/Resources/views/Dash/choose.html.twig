@@ -4,7 +4,7 @@
     {% if instances %}
         <h2>Veuillez séléectionner une instance Redis</h2>
         
-        <table>
+        <table  class="table table-striped">
             <thead>
                 <tr>
                     <th>Libellé</th>
@@ -34,3 +34,13 @@
     <p>Pour ajouter une instance Redis, <a href="{{ path('itkg_php_redmon_instance_new') }}">cliquez ici</a></p>
 {% endblock %}    
 
+
+{% block widget %}
+    <div class="span5 pull-right">
+        <div class="well well-large add_link">
+            <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}">
+                <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/>
+                <strong>Ajouter une instance</strong></a>
+        </div>
+    </div>
+{% endblock %} 

@@ -56,7 +56,7 @@ class CrudController extends BaseController
                 $this->getManager()->create($form->getData());
                 $this->get('session')->setFlash('success', 'Instance Redis ajouté avec succès');
 
-                return new RedirectResponse($this->generateUrl('itkg_php_redmon_instances'));
+                return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
                 $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
 
@@ -95,9 +95,9 @@ class CrudController extends BaseController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('notice', 'Instance Redis modifié avec succès');
+                $this->get('session')->setFlash('success', 'Instance Redis modifié avec succès');
 
-                return new RedirectResponse($this->generateUrl('itkg_php_redmon_instances'));
+                return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
                 $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
 
@@ -116,6 +116,10 @@ class CrudController extends BaseController
     
     public function deleteAction($id)
     {
+        // @TODO : finir cette partie
+        $this->getManager()->delete($id);
+        $this->get('session')->setFlash('notice', 'Instance Redis modifié avec succès');
+
         return $this->render(
             $this->getTemplatePath().'index.html.twig',
             array()

@@ -23,7 +23,7 @@ class DashController extends BaseController
     public function indexAction()
     {
         $instance = $this->getCurrentInstance();
-        if($instance !== null) {
+        if($instance) {
             
             $worker = $this->getWorker()->setInstance($instance);
             
