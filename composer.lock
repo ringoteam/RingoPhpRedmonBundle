@@ -1,5 +1,5 @@
 {
-    "hash": "44090ce32ea7e2212348915d0a5ad99a",
+    "hash": "bd74b3c2c03f8d1fcbc9e6f50dda576a",
     "packages": [
         {
             "name": "doctrine/common",
@@ -25,7 +25,6 @@
                     "dev-master": "2.3.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common": "lib/"
@@ -71,255 +70,6 @@
             ]
         },
         {
-            "name": "doctrine/dbal",
-            "version": "2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/dbal",
-                "reference": "2.3.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/doctrine/dbal/archive/2.3.2.zip",
-                "reference": "2.3.2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "doctrine/common": "2.3.*"
-            },
-            "time": "2013-01-07 20:03:43",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\DBAL": "lib/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                }
-            ],
-            "description": "Database Abstraction Layer",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "persistence",
-                "dbal",
-                "queryobject"
-            ]
-        },
-        {
-            "name": "doctrine/doctrine-bundle",
-            "version": "v1.1.0",
-            "target-dir": "Doctrine/Bundle/DoctrineBundle",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/doctrine/DoctrineBundle.git",
-                "reference": "v1.1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineBundle/archive/v1.1.0.zip",
-                "reference": "v1.1.0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "2.1.*",
-                "symfony/doctrine-bridge": "2.1.*",
-                "doctrine/dbal": ">=2.2,<2.5-dev",
-                "jdorn/sql-formatter": ">=1.1,<2.0"
-            },
-            "require-dev": {
-                "doctrine/orm": ">=2.2,<2.5-dev",
-                "symfony/yaml": "2.1.*",
-                "symfony/validator": "2.1.*"
-            },
-            "suggest": {
-                "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
-            },
-            "time": "2013-01-12 13:20:23",
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Bundle\\DoctrineBundle": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                }
-            ],
-            "description": "Symfony DoctrineBundle",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "orm",
-                "persistence",
-                "dbal"
-            ]
-        },
-        {
-            "name": "doctrine/orm",
-            "version": "2.3.2",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "2.3.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/2.3.2.zip",
-                "reference": "2.3.2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "ext-pdo": "*",
-                "doctrine/dbal": "2.3.*",
-                "symfony/console": "2.*"
-            },
-            "suggest": {
-                "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
-            },
-            "time": "2013-01-07 20:05:04",
-            "bin": [
-                "bin/doctrine",
-                "bin/doctrine.php"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\ORM": "lib/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                }
-            ],
-            "description": "Object-Relational-Mapper for PHP",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "orm"
-            ]
-        },
-        {
-            "name": "jdorn/sql-formatter",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "v1.2.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/v1.2.0.zip",
-                "reference": "v1.2.0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.4"
-            },
-            "time": "2012-12-22 21:46:50",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "classmap": [
-                    "lib"
-                ]
-            },
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Jeremy Dorn",
-                    "email": "jeremy@jeremydorn.com",
-                    "homepage": "http://jeremydorn.com/"
-                }
-            ],
-            "description": "a PHP SQL highlighting library",
-            "homepage": "https://github.com/jdorn/sql-formatter/",
-            "keywords": [
-                "sql",
-                "highlight"
-            ]
-        },
-        {
             "name": "jms/aop-bundle",
             "version": "1.0.0",
             "target-dir": "JMS/AopBundle",
@@ -340,7 +90,6 @@
             },
             "time": "2012-01-02 12:50:26",
             "type": "symfony-bundle",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "JMS\\AopBundle": ""
@@ -382,7 +131,6 @@
             },
             "time": "2012-01-02 12:40:52",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "CG\\": "src/"
@@ -441,7 +189,6 @@
             },
             "time": "2012-09-21 01:56:32",
             "type": "symfony-bundle",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "JMS\\DiExtraBundle": ""
@@ -484,7 +231,6 @@
             },
             "time": "2012-01-02 13:32:49",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Metadata\\": "src/"
@@ -547,7 +293,6 @@
             },
             "time": "2012-09-06 09:12:03",
             "type": "symfony-bundle",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "JMS\\SecurityExtraBundle": ""
@@ -576,26 +321,28 @@
         },
         {
             "name": "knplabs/gaufrette",
-            "version": "v0.1.3",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/Gaufrette",
-                "reference": "v0.1.3"
+                "reference": "v0.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/KnpLabs/Gaufrette/archive/v0.1.3.zip",
-                "reference": "v0.1.3",
+                "url": "https://github.com/KnpLabs/Gaufrette/archive/v0.1.4.zip",
+                "reference": "v0.1.4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.2"
             },
             "require-dev": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "phpspec/phpspec2": "1.0.*",
                 "rackspace/php-cloudfiles": "*",
                 "doctrine/dbal": ">=2.3",
-                "dropbox-php/dropbox-php": "*"
+                "dropbox-php/dropbox-php": "*",
+                "herzult/php-ssh": "*"
             },
             "suggest": {
                 "knplabs/knp-gaufrette-bundle": "*",
@@ -603,23 +350,24 @@
                 "amazonwebservices/aws-sdk-for-php": "to use the Amazon S3 adapter",
                 "doctrine/dbal": "to use the Doctrine DBAL adapter",
                 "ext-zip": "to use the Zip adapter",
+                "ext-apc": "to use the APC adapter",
                 "ext-curl": "*",
                 "ext-mbstring": "*",
                 "ext-mongo": "*"
             },
-            "time": "2012-10-15 01:49:58",
+            "time": "2013-01-25 08:51:55",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "0.2.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Gaufrette": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -644,35 +392,40 @@
         },
         {
             "name": "knplabs/knp-gaufrette-bundle",
-            "version": "v0.1.3",
+            "version": "v0.1.4",
             "target-dir": "Knp/Bundle/GaufretteBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpGaufretteBundle",
-                "reference": "v0.1.3"
+                "reference": "v0.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/KnpLabs/KnpGaufretteBundle/archive/v0.1.3.zip",
-                "reference": "v0.1.3",
+                "url": "https://github.com/KnpLabs/KnpGaufretteBundle/archive/v0.1.4.zip",
+                "reference": "v0.1.4",
                 "shasum": ""
             },
             "require": {
                 "symfony/framework-bundle": "2.*",
-                "knplabs/gaufrette": "0.1.3"
+                "knplabs/gaufrette": "0.1.4"
             },
             "require-dev": {
                 "symfony/yaml": "2.*",
                 "symfony/console": "2.*"
             },
-            "time": "2012-11-14 14:30:37",
+            "time": "2013-01-30 11:41:55",
             "type": "symfony-bundle",
-            "installation-source": "dist",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Knp\\Bundle\\GaufretteBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -702,12 +455,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e"
+                "reference": "faf3b245977d8bc06c9da4710dbcad37756993a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/archive/5591252faa1c7f3299660daebffd63dee2746b7e.zip",
-                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/faf3b245977d8bc06c9da4710dbcad37756993a9",
+                "reference": "faf3b245977d8bc06c9da4710dbcad37756993a9",
                 "shasum": ""
             },
             "require": {
@@ -732,14 +485,13 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-            "time": "1358029224",
+            "time": "2013-01-31 17:45:10",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.1-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Assetic": "src/"
@@ -748,6 +500,7 @@
                     "src/functions.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -798,7 +551,6 @@
                     "dev-master": "1.3.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Monolog": "src/"
@@ -828,12 +580,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/nrk/predis.git",
-                "reference": "v0.8.1"
+                "reference": "3e125c964cbb2f2b8790f6707b16b4842ab37a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/nrk/predis/archive/v0.8.1.zip",
-                "reference": "v0.8.1",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/3e125c964cbb2f2b8790f6707b16b4842ab37a5c",
+                "reference": "3e125c964cbb2f2b8790f6707b16b4842ab37a5c",
                 "shasum": ""
             },
             "require": {
@@ -843,14 +595,14 @@
                 "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol",
                 "ext-curl": "Allows access to Webdis when paired with phpiredis"
             },
-            "time": "1358590738",
+            "time": "2013-02-02 14:14:06",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Predis": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -894,7 +646,6 @@
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Sensio\\Bundle\\DistributionBundle": ""
@@ -941,7 +692,6 @@
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Sensio\\Bundle\\FrameworkExtraBundle": ""
@@ -993,7 +743,6 @@
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Sensio\\Bundle\\GeneratorBundle": ""
@@ -1009,55 +758,6 @@
                 }
             ],
             "description": "This bundle generates code for you"
-        },
-        {
-            "name": "swiftmailer/swiftmailer",
-            "version": "v4.2.2",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/swiftmailer/swiftmailer.git",
-                "reference": "v4.2.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/swiftmailer/swiftmailer/zipball/v4.2.2",
-                "reference": "v4.2.2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.4"
-            },
-            "time": "2012-10-25 01:30:40",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "lib/swift_required.php"
-                ]
-            },
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Chris Corbyn"
-                }
-            ],
-            "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "http://swiftmailer.org",
-            "keywords": [
-                "mail",
-                "mailer"
-            ]
         },
         {
             "name": "symfony/assetic-bundle",
@@ -1098,7 +798,6 @@
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Bundle\\AsseticBundle": ""
@@ -1155,7 +854,6 @@
                     "dev-master": "2.1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Bundle\\MonologBundle": ""
@@ -1180,61 +878,6 @@
                 "log",
                 "logging"
             ]
-        },
-        {
-            "name": "symfony/swiftmailer-bundle",
-            "version": "v2.1.7",
-            "target-dir": "Symfony/Bundle/SwiftmailerBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/SwiftmailerBundle",
-                "reference": "v2.1.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/symfony/SwiftmailerBundle/archive/v2.1.7.zip",
-                "reference": "v2.1.7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "swiftmailer/swiftmailer": ">=4.2.0,<4.3-dev",
-                "symfony/swiftmailer-bridge": ">=2.1.0,<2.3-dev"
-            },
-            "require-dev": {
-                "symfony/dependency-injection": ">=2.1.0,<2.3-dev",
-                "symfony/http-kernel": ">=2.1.0,<2.3-dev",
-                "symfony/config": ">=2.1.0,<2.3-dev",
-                "symfony/yaml": ">=2.1.0,<2.3-dev"
-            },
-            "time": "2013-01-04 17:04:29",
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Bundle\\SwiftmailerBundle": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony SwiftmailerBundle",
-            "homepage": "http://symfony.com"
         },
         {
             "name": "symfony/symfony",
@@ -1298,7 +941,6 @@
             },
             "time": "2013-01-17 21:21:51",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Symfony": "src/",
@@ -1341,14 +983,13 @@
             "require": {
                 "twig/twig": "1.*"
             },
-            "time": "1357318505",
+            "time": "2013-01-04 16:55:05",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Twig_Extensions_": "lib/"
@@ -1395,7 +1036,6 @@
                     "dev-master": "1.12-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Twig_": "lib/"
