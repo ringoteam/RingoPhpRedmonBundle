@@ -40,7 +40,7 @@ knp_gaufrette:
     adapters:
         phpredmon:
             local:
-                directory: /tmp/phpredmon/datas
+                directory: /var/phpredmon/datas
                 create: true
     filesystems:
         phpredmon:

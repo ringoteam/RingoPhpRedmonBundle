@@ -17,9 +17,10 @@ class DashController extends BaseController
     {
         $instance = $this->getCurrentInstance();
         if($instance !== null) {
-            var_dump($instance->getId());
+            
             // Update of instance to have last logs created
             $instance = $this->getManager()->find($instance->getId());
+            
             $worker = $this->getWorker()->setInstance($instance);
             $worker->ping();
             $worker->getInfos();
