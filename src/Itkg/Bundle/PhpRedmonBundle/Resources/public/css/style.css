@@ -29,3 +29,13 @@ a.accordion-toggle, .black {
 .accordion-heading .accordion-toggle .caret {
     margin-top: 5px;
 }
+
+.green {
+    background-image: url('../images/green.gif');
+    
+}
+
+.red {
+    background-image: url('../images/red.jpg');
+    
+}

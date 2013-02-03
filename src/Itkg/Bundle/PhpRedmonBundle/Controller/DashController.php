@@ -27,7 +27,7 @@ class DashController extends BaseController
             
             $worker = $this->getWorker();
             
-            if($worker->ping()) {
+            if($worker) {
                 
                 return $this->render(
                     $this->getTemplatePath().'index.html.twig',
@@ -49,10 +49,20 @@ class DashController extends BaseController
             );
         }
         
+        $instances = $this->getManager()->findAll();
+        $worker = $this->get('itkg_php_redmon.instance_worker');
+        if(is_array($instances)) {
+            foreach($instances as $index => $instance) {
+                $working = $worker->setInstance($instance)->ping();
+                $instances[$index]->setWorking($working);
+                $instances[$index]->setError($worker->getMessage());
+            }
+        }
+        
         return $this->render(
             $this->getTemplatePath().'choose.html.twig',
             array(
-                'instances' => $this->getManager()->findAll()
+                'instances' => $instances 
             )
          );
     }
@@ -60,7 +70,9 @@ class DashController extends BaseController
     public function clientAction()
     {
         $worker = $this->getWorker();
-        
+        if(!$worker) {
+            return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
+        }
         return $this->render(
             $this->getTemplatePath().'client.html.twig',
             array(
@@ -73,6 +85,9 @@ class DashController extends BaseController
     public function configurationAction()
     {
         $worker = $this->getWorker();
+        if(!$worker) {
+            return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
+        }
         
         return $this->render(
             $this->getTemplatePath().'configuration.html.twig',

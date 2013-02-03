@@ -42,7 +42,13 @@ class Controller extends BaseController
     {
         $instance = $this->getCurrentInstance();
         if($instance) {
-            return $this->get('itkg_php_redmon.instance_worker')->setInstance($instance);
+            $worker = $this->get('itkg_php_redmon.instance_worker')->setInstance($instance);
+            if($worker->ping()) {
+                return $worker;
+            }
+            $this->getRequest()->getSession()->set('instance', null);
+            
+            return false;
         }
         
         return false;
