@@ -39,6 +39,11 @@ class InstanceManager
         $this->em->persist($instance);
     }
     
+    public function delete(Instance $instance)
+    {
+        $this->instance->remove($instance);
+    }
+    
     public function find($id)
     {
         return $this->em->find($id);

@@ -2,7 +2,7 @@
 
 {% block main %}
     
-        <h2>Modifier une instance Redis</h2>
+        <h2>Update a Redis Instance</h2>
         {% if errors %}
             <div class="alert alert-error">
                 {{ form_errors(form) }}
@@ -14,19 +14,19 @@
         {{ form_row(form.name, { 'attr': {'oninvalid': "setCustomValidity('Veuillez remplir ce champs')"} }) }}
         {{ form_row(form.host, { 'attr': {'oninvalid': "setCustomValidity('Veuillez remplir ce champs')"} }) }}
         {{ form_row(form.port, { 'attr': {'oninvalid': "setCustomValidity('Veuillez remplir ce champs')"} }) }}
-        <span>Bases de données : <a href="#" class="del_database">Supprimer les bases de données</a></span>
+        <span>Databases : <a href="#" class="del_database">Delete all databases</a></span>
         <ul class="databases" data-prototype="{{ form_widget(form.databases.vars.prototype)|e }}">
             {% for database in form.databases %}
-                <li>Base n° {{database.id.vars.value}} {{ form_row(database.name) }}</li>
+                <li>Database n° {{database.id.vars.value}} {{ form_row(database.name) }}</li>
             {% endfor %}
         </ul>
         <span class="add_link">
             <a href="#" class="add_database black">
                 <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/>
-                <strong>Ajouter une base</strong>
+                <strong>Add a database</strong>
             </a>
         </span>
-        <input class="btn" type="submit" value="Valider" />
+        <input class="btn" type="submit" value="Submit" />
     </form>
         
     
@@ -37,7 +37,7 @@
         <div class="well well-large add_link">
             <a class="black" href="{{ path('itkg_php_redmon_instance_delete', {'id': id}) }}">
                 <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/del.png') }}" width="20"/>
-                <strong>Supprimer cette instance</strong></a>
+                <strong>Delete this instance</strong></a>
         </div>
     </div>
 {% endblock %}

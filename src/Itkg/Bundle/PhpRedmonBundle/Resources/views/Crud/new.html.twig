@@ -1,7 +1,7 @@
 {% extends 'ItkgPhpRedmonBundle::base.html.twig' %}
 
 {% block main %}
-    <h2>Créer une instance Redis</h2>
+    <h2>Create a Redis Instance</h2>
     {% if errors %}
         <div class="alert alert-error">
             {{ form_errors(form) }}
@@ -15,15 +15,15 @@
         {{ form_row(form.port, { 'attr': {'oninvalid': "setCustomValidity('Veuillez remplir ce champs')"} }) }}
         <ul class="databases" data-prototype="{{ form_widget(form.databases.vars.prototype)|e }}">
             {% for database in form.databases %}
-                <li>Base n° {{database.id.vars.value}} {{ form_row(database.name) }}</li>
+                <li>Database n° {{database.id.vars.value}} {{ form_row(database.name) }}</li>
             {% endfor %}
         </ul>
             
         <a href="#" class="add_database">
             <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/>
-            <strong>Ajouter une base</strong>
+            <strong>Add a database</strong>
         </a>
-        <input class="btn" type="submit" value="Valider" />
+        <input class="btn" type="submit" value="Submit" />
     </form>
 {% endblock %}    
 

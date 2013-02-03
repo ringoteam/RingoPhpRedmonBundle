@@ -40,6 +40,11 @@ class Controller extends BaseController
     
     protected function getWorker()
     {
-        return $this->get('itkg_php_redmon.instance_worker');
+        $instance = $this->getCurrentInstance();
+        if($instance) {
+            return $this->get('itkg_php_redmon.instance_worker')->setInstance($instance);
+        }
+        
+        return false;
     }
 }
