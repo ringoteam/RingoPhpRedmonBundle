@@ -18,8 +18,8 @@ class PhpRedmonController extends Controller
     public function indexAction()
     {
         
-        $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
-        //$redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://10.255.252.219:6379');        
+        //$redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
+        $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://10.255.252.219:6379');        
         $monitoring =  new \Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring($redis);
         $infos = $monitoring->GetStat();
         
@@ -41,7 +41,8 @@ class PhpRedmonController extends Controller
      */
     public function clientAction()
     {
-         $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
+         //$redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
+        $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://10.255.252.219:6379');        
          $monitoring =  new \Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring($redis);
          $clientList =  $monitoring->GetClientList();
          return array('client_list'=>$clientList);
@@ -55,7 +56,8 @@ class PhpRedmonController extends Controller
      */
     public function configAction()
     {
-         $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379');        
+         //$redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://192.168.50.4:6379'); 
+         $redis = new \Itkg\Bundle\PhpRedmonBundle\Redis\Predis\Client('tcp://10.255.252.219:6379');        
          $monitoring =  new \Itkg\Bundle\PhpRedmonBundle\Monitoring\RedisMonitoring($redis);
          $configlist =  $monitoring->GetConfig();
          return array('configlist'=>$configlist);
