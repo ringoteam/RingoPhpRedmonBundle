@@ -1,0 +1,50 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="{{ path('itkg_php_redmon') }}">PhpRedmon</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="{{ path('itkg_php_redmon') }}">Dashboard</a></li>
+            {% if instance != null %}
+                <li><a href="{{ path('itkg_php_redmon_instance_client') }}">Clients</a></li>
+                <li><a href="{{ path('itkg_php_redmon_instance_configuration') }}">Configuration</a></li>
+                <li><a href="">Console</a></li>
+                <li><a href="{{ path('itkg_php_redmon_instance_edit', {'id': instance.id}) }}">Administration</a></li>
+            {% else %}
+                <li class="disabled"><a href="#">Clients</a></li>
+                <li class="disabled"><a href="#">Configuration</a></li>
+                <li class="disabled"><a href="#">Console</a></li>
+                <li class="disabled"><a href="#">Administration</a></li>
+            {% endif %}
+          </ul>
+          <ul class="nav pull-right">
+            <li class="dropdown pull-right">
+                {% if instance == null %}
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                     Choisissez une instance
+                     <b class="caret"></b>
+                   </a>
+                {% else %}
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Instance sélectionnée : {{ instance.name }}
+                        <b class="caret"></b>
+                    </a>
+                {% endif %}
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                {% for instance in instances %}
+                    <li>
+                        <a tabindex="-1" href="{{ path('itkg_php_redmon_instance_select', {'id': instance.id}) }}">{{ instance.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+</div>

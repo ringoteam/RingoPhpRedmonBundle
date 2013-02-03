@@ -1,14 +1,23 @@
 <?php
 
+/*
+ * This file is part of the phpRedmon project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Itkg\Bundle\PhpRedmonBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+/**
+ * Classe Configuration
  *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
+ * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
+ * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -19,11 +28,15 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('itkg_php_redmon');
-
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
-
+        $rootNode
+            ->children()
+                ->arrayNode('log')
+                    ->children()
+                        ->scalarNode('days')->isRequired()->end()
+                    ->end()
+                ->end()
+            ->end();
+       
         return $treeBuilder;
     }
 }

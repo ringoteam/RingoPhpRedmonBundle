@@ -1,0 +1,18 @@
+
+{% block main %}
+<div class="row">
+    <div class="span9">
+        {% include 'ItkgPhpRedmonBundle:Dash:_statistics.html.twig' %}
+
+    </div>
+    <div class="span3">
+      <div class="well well-large add_link">
+          <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}"><img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/><strong>Ajouter une instance</strong></a>
+      </div>
+      <div class="accordion" id="accordion2">
+            {% include 'ItkgPhpRedmonBundle:Dash:_widget_administration.html.twig' with {'instance': instance} %}
+            {% include 'ItkgPhpRedmonBundle:Dash:_widget_infos.html.twig' with {'instance': instance} %}
+      </div>
+    </div>
+</div>
+{% endblock %}    
