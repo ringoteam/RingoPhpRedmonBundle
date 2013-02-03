@@ -27,13 +27,14 @@ class MainController extends BaseController
      * 
      * @return mixed
      */
-    public function navigationAction()
+    public function navigationAction($route)
     {
         return $this->render(
             $this->getTemplatePath().'navigation.html.twig',
             array(
                 'instance'  => $this->getCurrentInstance(),
-                'instances' => $this->getManager()->findAll()
+                'instances' => $this->getManager()->findAll(),
+                'route'     => $route
             )
         );
     }
