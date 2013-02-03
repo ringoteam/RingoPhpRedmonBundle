@@ -86,10 +86,11 @@ class InstanceLogger
             ->setInstance($this->instance)
             ->getInfos();
         $createdAt = new \DateTime();
-        
+        $graphInfo = array();
+        $graphInfo['memory'] = $infos['Memory']['used_memory'];
         $log = new Log();
         $log->setCreatedAt($createdAt);
-        $log->setDatas($infos);
+        $log->setDatas($graphInfo);
         
         $this->instance->addLog($log);
     }
