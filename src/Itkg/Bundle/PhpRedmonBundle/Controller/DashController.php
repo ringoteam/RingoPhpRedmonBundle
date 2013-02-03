@@ -13,13 +13,18 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
 
 /**
- * Classe DashController
+ * Class DashController
  *
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
- * @author Pascal DENIS <pascal.denis.75@gmail.com>
+ * @author Pascal DENIS <pascal.denis.75@gmail.cerrorom>
  */
 class DashController extends BaseController
 {
+    /**
+     * Render choose action or dashboard action
+     * 
+     * @return mixed
+     */
     public function indexAction()
     {
         $instance = $this->getCurrentInstance();
@@ -27,9 +32,9 @@ class DashController extends BaseController
         if($instance) {
             
             $worker = $this->getWorker();
-            
+            // Worker can be undefined if server went away
+            // For the current instance or if we have no instance selected
             if($worker) {
-                
                 return $this->render(
                     $this->getTemplatePath().'index.html.twig',
                     array(
@@ -40,21 +45,14 @@ class DashController extends BaseController
                     )
                 );
             }
-            
-            // @TODO gestion erreur
-            return $this->render(
-                $this->getTemplatePath().'error.html.twig',
-                array(
-                    'instance' => $instance,
-                )
-            );
         }
-        
+        // Get all instances
         $instances = $this->getManager()->findAll();
         
         $worker = $this->get('itkg_php_redmon.instance_worker');
         if(is_array($instances)) {
             foreach($instances as $index => $instance) {
+                // Ping server and get potential error message
                 $working = $worker->setInstance($instance)->ping();
                 $instances[$index]->setWorking($working);
                 $instances[$index]->setError($worker->getMessage());
@@ -69,9 +67,16 @@ class DashController extends BaseController
          );
     }
     
+    /**
+     * Render client list for the current instance
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function clientAction()
     {
         $worker = $this->getWorker();
+        // Worker can be undefined if server went away
+        // For the current instance or if we have no instance selected
         if(!$worker) {
             return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
         }
@@ -84,9 +89,16 @@ class DashController extends BaseController
         );
     }
     
+    /**
+     * Render configuration list for the current instance
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function configurationAction()
     {
         $worker = $this->getWorker();
+        // Worker can be undefined if server went away
+        // For the current instance or if we have no instance selected
         if(!$worker) {
             return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
         }
@@ -100,10 +112,17 @@ class DashController extends BaseController
         );
     }
     
-    
+    /**
+     * Select action
+     * Change the current instance
+     * 
+     * @param string $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function selectAction($id)
     {
         $instance = $this->getManager()->find($id);
+        // If instance exists
         if($instance) {
             $this->getRequest()->getSession()->set('instance', $instance);
             $this->get('session')->setFlash('success', 'Instance '.$instance->getName().' selected');
@@ -114,6 +133,11 @@ class DashController extends BaseController
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
     }
     
+    /**
+     * Get template path for this controller
+     * 
+     * @return string
+     */
     protected function getTemplatePath()
     {
         return 'ItkgPhpRedmonBundle:Dash:';

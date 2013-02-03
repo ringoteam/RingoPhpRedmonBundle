@@ -10,22 +10,52 @@
 namespace Itkg\Bundle\PhpRedmonBundle\Serializer;
 
 /**
- * Classe EntitySerializer
+ * Class EntitySerializer
  *
+ * Save entity in serialize format
+ * 
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class EntitySerializer 
 {
+    /**
+     * File manager
+     * 
+     * @var mixed 
+     */
     protected $fileManager;
+    
+    /**
+     * Object class
+     * 
+     * @var string 
+     */
     protected $class;
+    
+    /**
+     * Hash associated to the class
+     * 
+     * @var string
+     */
     protected $hash;
     
+    /**
+     * Constructor
+     * 
+     * @param mixed $fileManager
+     */
     public function __construct($fileManager)
     {
         $this->fileManager = $fileManager;
     }
     
+    /**
+     * Find an entity by ID
+     * 
+     * @param string $id
+     * @return null|mixed
+     */
     public function find($id)
     {
         $key = $this->getHash().$id;
@@ -36,6 +66,11 @@ class EntitySerializer
         return null;
     }
     
+    /**
+     * Save an object entity
+     * 
+     * @param mixed $object
+     */
     public function persist($object)
     {
         if(!$object->getId()) {
@@ -47,6 +82,11 @@ class EntitySerializer
         $this->getFileManager()->write($key, $content, true);
     }
     
+    /**
+     * Get next ID for an object class
+     * 
+     * @return int
+     */
     protected function _getNextId()
     {
         $keys = $this->getFileManager()->keys();
@@ -65,6 +105,11 @@ class EntitySerializer
         return $maxId + 1;
     }
     
+    /**
+     * Find all entities for a specific class
+     * 
+     * @return array
+     */
     public function findAll()
     {
         $keys = $this->getFileManager()->keys();
@@ -80,6 +125,11 @@ class EntitySerializer
         return $entities;
     }
     
+    /**
+     * Remove an entity
+     * 
+     * @param mixed $object
+     */
     public function remove($object)
     {
         $key = $this->getHash().$object->getId();
@@ -88,41 +138,80 @@ class EntitySerializer
         }
     }
     
+    /**
+     * Get file manager
+     * 
+     * @return mixed
+     */
     public function getFileManager()
     {
         return $this->fileManager;
     }
     
+    /**
+     * Set file manager
+     * 
+     * @param mixed $fileManager
+     */
     public function setFileManager($fileManager)
     {
         $this->fileManager = $fileManager;
     }
     
+    /**
+     * Get current entity class
+     * 
+     * @return string
+     */
     public function getClass()
     {
         return $this->class;
     }
     
+    /**
+     * Set current entity class
+     * 
+     * @param string $class
+     */
     public function setClass($class)
     {
         $this->class = $class;
         $this->setHash(md5($class));                                                                                                                                                                                         
     }
     
+    /**
+     * Get hash
+     * 
+     * @return string
+     */
     public function getHash()
     {
         return $this->hash;
     }
     
+    /**
+     * Set hash
+     * 
+     * @param string $hash
+     */
     public function setHash($hash)
     {
         $this->hash = $hash;
     }
     
+    /**
+     * Load an entity by key
+     * 
+     * @param string $key
+     * @return mixed|null
+     */
     protected function _loadEntity($key)
     {
         $content = $this->getFileManager()->read($key);
+        if($content) {
+            return unserialize($content);
+        }
         
-        return unserialize($content);
+        return null;
     }
 }

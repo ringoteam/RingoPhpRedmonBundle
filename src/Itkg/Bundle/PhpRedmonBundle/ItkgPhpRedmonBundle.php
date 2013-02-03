@@ -12,7 +12,7 @@ namespace Itkg\Bundle\PhpRedmonBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Classe ItkgPhpRedmonBundle
+ * Class ItkgPhpRedmonBundle
  *
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>

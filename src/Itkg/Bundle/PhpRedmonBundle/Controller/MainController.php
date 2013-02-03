@@ -14,24 +14,37 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
 
 /**
- * Classe MainController
+ * Class MainController
  *
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class MainController extends BaseController
 {
-    public function navigationAction()
+    /**
+     * Navigation action (partial)
+     * Render the current navigation
+     * 
+     * @return mixed
+     */
+    public function navigationAction($route)
     {
         return $this->render(
             $this->getTemplatePath().'navigation.html.twig',
             array(
                 'instance'  => $this->getCurrentInstance(),
-                'instances' => $this->getManager()->findAll()
+                'instances' => $this->getManager()->findAll(),
+                'route'     => $route
             )
         );
     }
     
+    /**
+     * Infos action (partial)
+     * Render some infos from the current redis instance
+     * 
+     * @return type
+     */
     public function infosAction()
     {
         return $this->render(
@@ -42,6 +55,12 @@ class MainController extends BaseController
         );
     }
     
+    /**
+     * Administration action (partial)
+     * Render administration actions for the current instance
+     * 
+     * @return type
+     */
     public function administrationAction()
     {
         return $this->render(
@@ -52,7 +71,11 @@ class MainController extends BaseController
         );
     }
     
-    
+    /**
+     * Render template path for this controller
+     * 
+     * @return string
+     */
     protected function getTemplatePath()
     {
         return 'ItkgPhpRedmonBundle:Main:';

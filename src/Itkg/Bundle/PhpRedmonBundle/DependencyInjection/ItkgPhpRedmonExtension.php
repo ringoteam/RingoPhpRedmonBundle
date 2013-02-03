@@ -22,6 +22,13 @@ use Symfony\Component\Config\FileLocator;
  */
 class ItkgPhpRedmonExtension extends Extension
 {
+    /**
+     * Load configuration of Bundle
+     * 
+     * @param array $configs Configuration parameters
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @throws \InvalidArgumentException
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
          $configuration = new Configuration();
@@ -38,6 +45,10 @@ class ItkgPhpRedmonExtension extends Extension
          $loader->load('logger.xml');
     }
 
+    /**
+     * 
+     * @return string Extension's alias
+     */
     public function getAlias()
     {
         return 'itkg_php_redmon';

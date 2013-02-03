@@ -9,12 +9,11 @@
 
 namespace Itkg\Bundle\PhpRedmonBundle\Controller;
 
-use Itkg\Bundle\PhpRedmonBundle\Form\InstanceType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
 
 /**
- * Classe AdminController
+ * Class AdminController
  *
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
@@ -22,10 +21,13 @@ use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
 class AdminController extends BaseController
 {
     public function indexAction()
-    {
-        
-    }
+    {}
     
+    /**
+     * Call flush all command for the current instance
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function flushAllAction()
     {
         try {
@@ -39,6 +41,12 @@ class AdminController extends BaseController
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
     }
     
+    /**
+     * Call flush DB command for the current instance and the current database
+     * 
+     * @param int $id Database index
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function flushDbAction($id)
     {
         try {
@@ -52,6 +60,11 @@ class AdminController extends BaseController
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
     }
     
+    /**
+     * Get the template path for this controller
+     * 
+     * @return string
+     */
     protected function getTemplatePath()
     {
         return 'ItkgPhpRedmonBundle:Admin:';
