@@ -25,6 +25,7 @@ class Instance
     protected $databases;
     protected $logs;
     protected $working;
+    protected $error;
     
     public function addDatabase(Database $database)
     {
@@ -86,6 +87,11 @@ class Instance
         return null;
     }
     
+    public function getError()
+    {
+        return $this->error;
+    }
+    
     public function getLogs()
     {
         if($this->logs == null) {
@@ -125,6 +131,11 @@ class Instance
         $this->databases = $databases;
     }
  
+    public function setError($error)
+    {
+        $this->error = $error;
+    }
+    
     public function setLogs(ArrayCollection $logs)
     {
         $this->logs = $logs;

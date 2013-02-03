@@ -75,6 +75,9 @@ class CrudController extends BaseController
     public function editAction($id)
     {
         $instance = $this->getManager()->find($id);
+        if(!$instance) {
+            return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
+        }
         $form = $this->getForm($instance);
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',

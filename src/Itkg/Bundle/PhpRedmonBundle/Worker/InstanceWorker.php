@@ -22,6 +22,7 @@ class InstanceWorker
 {
     protected $instance;
     protected $client;
+    protected $exception;
     
     public function __construct()
     {
@@ -64,6 +65,19 @@ class InstanceWorker
         return $this->execute('config', array('get','*'));
     }
     
+    public function getException()
+    {
+        return $this->exception;
+    }
+    
+    public function getMessage()
+    {
+        if($this->exception) {
+            return $this->exception->getMessage();
+        }
+        return '';
+    }
+    
     public function getInstance()
     {
         return $this->instance;
@@ -72,6 +86,7 @@ class InstanceWorker
     public function setInstance(Instance $instance)
     {
         $this->instance = $instance;
+        $this->exception = null;
         $this->connect();
         
         return $this;
@@ -91,7 +106,7 @@ class InstanceWorker
             $cmd = $this->client->createCommand($method, $parameters);
             return $this->client->executeCommand($cmd);
         }catch(\Exception $e) {
-            throw $e;
+            $this->exception = $e;
             return false;
         }
     }
