@@ -30,10 +30,7 @@
                     "Doctrine\\Common": "lib/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -99,10 +96,7 @@
                     "JMS\\AopBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "Apache"
             ],
@@ -144,10 +138,7 @@
                     "CG\\": "src/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "Apache"
             ],
@@ -206,10 +197,7 @@
                     "JMS\\DiExtraBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "Apache"
             ],
@@ -252,10 +240,7 @@
                     "Metadata\\": "src/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "Apache"
             ],
@@ -318,10 +303,7 @@
                     "JMS\\SecurityExtraBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "Apache2"
             ],
@@ -479,21 +461,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-<<<<<<< HEAD
-                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/archive/5591252faa1c7f3299660daebffd63dee2746b7e.zip",
-                "reference": "5591252faa1c7f3299660daebffd63dee2746b7e",
-=======
                 "reference": "faf3b245977d8bc06c9da4710dbcad37756993a9"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/faf3b245977d8bc06c9da4710dbcad37756993a9",
                 "reference": "faf3b245977d8bc06c9da4710dbcad37756993a9",
->>>>>>> pascal
                 "shasum": ""
             },
             "require": {
@@ -518,11 +491,7 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-<<<<<<< HEAD
-            "time": "2013-01-12 22:20:24",
-=======
             "time": "2013-01-31 17:45:10",
->>>>>>> pascal
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -566,7 +535,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/zipball/1.2.1",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.2.1",
                 "reference": "1.2.1",
                 "shasum": ""
             },
@@ -581,7 +550,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
-            "time": "2012-08-29 04:53:20",
+            "time": "2012-08-29 11:53:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -593,10 +562,7 @@
                     "Monolog": "src/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -621,21 +587,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/nrk/predis.git",
-<<<<<<< HEAD
-                "reference": "v0.8.1"
+                "reference": "v0.8.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/nrk/predis/archive/v0.8.1.zip",
-                "reference": "v0.8.1",
-=======
-                "reference": "3e125c964cbb2f2b8790f6707b16b4842ab37a5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/3e125c964cbb2f2b8790f6707b16b4842ab37a5c",
-                "reference": "3e125c964cbb2f2b8790f6707b16b4842ab37a5c",
->>>>>>> pascal
+                "url": "https://api.github.com/repos/nrk/predis/zipball/v0.8.2",
+                "reference": "v0.8.2",
                 "shasum": ""
             },
             "require": {
@@ -645,11 +602,7 @@
                 "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol",
                 "ext-curl": "Allows access to Webdis when paired with phpiredis"
             },
-<<<<<<< HEAD
-            "time": "2013-01-19 10:18:58",
-=======
-            "time": "2013-02-02 14:14:06",
->>>>>>> pascal
+            "time": "2013-02-03 12:59:55",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -705,10 +658,7 @@
                     "Sensio\\Bundle\\DistributionBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -755,10 +705,7 @@
                     "Sensio\\Bundle\\FrameworkExtraBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -810,10 +757,7 @@
                     "Sensio\\Bundle\\GeneratorBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -869,10 +813,7 @@
                     "Symfony\\Bundle\\AsseticBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -929,10 +870,7 @@
                     "Symfony\\Bundle\\MonologBundle": ""
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -1021,10 +959,7 @@
                     "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -1054,7 +989,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig-extensions/archive/5c2d515d4624bdd588226d688173cf0399a4d8cf.zip",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/5c2d515d4624bdd588226d688173cf0399a4d8cf",
                 "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
                 "shasum": ""
             },
@@ -1073,10 +1008,7 @@
                     "Twig_Extensions_": "lib/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "MIT"
             ],
@@ -1123,10 +1055,7 @@
                     "Twig_": "lib/"
                 }
             },
-<<<<<<< HEAD
             "notification-url": "https://packagist.org/downloads/",
-=======
->>>>>>> pascal
             "license": [
                 "BSD-3"
             ],

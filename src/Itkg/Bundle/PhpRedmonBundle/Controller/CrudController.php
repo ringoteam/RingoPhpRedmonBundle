@@ -21,18 +21,11 @@ use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
  */
 class CrudController extends BaseController
 {
-    
-    public function indexAction()
-    {
-        $instances = $this->getManager()->findAll();
-        return $this->render(
-            $this->getTemplatePath().'index.html.twig',
-            array(
-                'instances' => $instances
-            )
-        );
-    }
-
+    /**
+     * New instance action
+     * 
+     * @return mixed
+     */
     public function newAction()
     {
         return $this->render(
@@ -44,6 +37,11 @@ class CrudController extends BaseController
         );
     }
 
+    /**
+     * Create instance action
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function createAction()
     {
         $form = $this->getForm();
@@ -72,6 +70,12 @@ class CrudController extends BaseController
         );
     }
     
+    /**
+     * Edit instance action
+     * 
+     * @param string $id The instance ID
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function editAction($id)
     {
         $instance = $this->getManager()->find($id);
@@ -89,21 +93,28 @@ class CrudController extends BaseController
         );
     }
     
+    /**
+     * Update instance action
+     * 
+     * @param string $id The instance ID
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function updateAction($id)
     {
         $form = $this->getForm();
-
+        // Get request
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
             $form->bindRequest($request);
+            
             if ($form->isValid()) {
+                // Save instance
                 $this->getManager()->create($form->getData());
                 $this->get('session')->setFlash('success', 'Instance Redis updated successfully');
 
                 return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
                 $this->get('session')->setFlash('error', 'Some errors found');
-
             }
         }
         
@@ -114,9 +125,14 @@ class CrudController extends BaseController
                 'errors' => $form->getErrors()
             )
         );
-        
     }
-    
+
+    /**
+     * Delete instance action
+     * 
+     * @param string $id The instance ID
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction($id)
     {
         $instance = $this->getManager()->find($id);
@@ -130,6 +146,11 @@ class CrudController extends BaseController
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
     }
     
+    /**
+     * Get template path for this controller
+     * 
+     * @return string
+     */
     protected function getTemplatePath()
     {
         return 'ItkgPhpRedmonBundle:Crud:';

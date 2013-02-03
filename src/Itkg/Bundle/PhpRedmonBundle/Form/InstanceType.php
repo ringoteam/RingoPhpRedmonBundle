@@ -13,13 +13,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Classe InstanceType
+ * Class InstanceType
  *
+ * Form for Redis instance
+ * 
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class InstanceType extends AbstractType
 {
+    /**
+     * Build form
+     * 
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('id', 'hidden');
@@ -35,6 +43,12 @@ class InstanceType extends AbstractType
         ));
     }
 
+    /**
+     * Get form default options
+     * 
+     * @param array $options
+     * @return array Form options
+     */
     public function getDefaultOptions(array $options)
     {
         return array(
@@ -42,8 +56,10 @@ class InstanceType extends AbstractType
         );
     }
     
-    
-    
+    /**
+     * Get form name
+     * @return string Form name
+     */
     public function getName()
     {
         return 'itkg_php_redmon_instance';

@@ -1,7 +1,3 @@
-itkg_php_redmon_instances:
-    pattern:   /instances
-    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:index }
-
 itkg_php_redmon_instance_new:
     pattern:   /instance/new
     defaults:  { _controller: ItkgPhpRedmonBundle:Crud:new }
