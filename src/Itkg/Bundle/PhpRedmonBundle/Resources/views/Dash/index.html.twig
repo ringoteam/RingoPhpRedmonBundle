@@ -92,6 +92,7 @@
         Persistence :
       </a>
     </div>
+ 
     <div id="collapseFour" class="accordion-body collapse">
       <div class="accordion-inner">
                   <table class="table table-striped">
@@ -100,40 +101,40 @@
                      </tr>
                      <tr>
                       <tr>
-                       <td>Number of changes since the last dump : </td> <td>{{infos.Persistence.changes_since_last_save}}</td> 
+                       <td>Number of changes since the last dump : </td> <td>{{infos.Persistence.rdb_changes_since_last_save}}</td> 
                      </tr>
                       <tr>
-                       <td>Bgsave in progress : </td> <td>infos.Persistence.rdb_bgsave_in_progress</td> 
+                       <td>Bgsave in progress : </td> <td>{{infos.Persistence.rdb_bgsave_in_progress}}</td> 
                      </tr>
                       <tr>
-                       <td>last successful RDB save : </td> <td>infos.Persistence.rdb_last_save_time</td> 
+                       <td>last successful RDB save : </td> <td>{{infos.Persistence.rdb_last_save_time}}</td> 
                      </tr>
                       <tr>
-                       <td>Status of the last RDB save operation : </td> <td>infos.Persistence.rdb_last_bgsave_status</td> 
+                       <td>Status of the last RDB save operation : </td> <td>{{infos.Persistence.rdb_last_bgsave_status}}</td> 
                      </tr>
                       <tr>
-                       <td>Duration of the last RDB save operation in seconds : </td> <td>infos.Persistence.rdb_last_bgsave_time_sec</td> 
+                       <td>Duration of the last RDB save operation in seconds : </td> <td>{{infos.Persistence.rdb_last_bgsave_time_sec}}</td> 
                      </tr>
                       <tr>
-                       <td>Duration of the on-going RDB save operation if any : </td> <td>infos.Persistence.rdb_current_bgsave_time_sec</td> 
+                       <td>Duration of the on-going RDB save operation if any : </td> <td>{{infos.Persistence.rdb_current_bgsave_time_sec}}</td> 
                      </tr>
                       <tr>
                        <td>AOF logging is activated : </td> <td>{{infos.Persistence.aof_enabled}}</td> 
                      </tr>
                       <tr>
-                       <td>AOF rewrite operation is on-going : </td> <td>infos.Persistence.aof_rewrite_in_progress</td> 
+                       <td>AOF rewrite operation is on-going : </td> <td>{{infos.Persistence.aof_rewrite_in_progress}}</td> 
                      </tr>
                       <tr>
-                       <td> AOF rewrite operation will be scheduled  : </td> <td>infos.Persistence.aof_rewrite_scheduled</td> 
+                       <td> AOF rewrite operation will be scheduled  : </td> <td>{{infos.Persistence.aof_rewrite_scheduled}}</td> 
                      </tr>
                       <tr>
-                       <td>Duration of the last AOF rewrite operation in seconds : </td> <td>infos.Persistence.aof_last_rewrite_time_sec</td> 
+                       <td>Duration of the last AOF rewrite operation in seconds : </td> <td>{{infos.Persistence.aof_last_rewrite_time_sec}}</td> 
                      </tr>
                       <tr>
-                       <td>Duration of the on-going AOF rewrite operation if any : </td> <td>infos.Persistence.aof_current_rewrite_time_sec</td> 
+                       <td>Duration of the on-going AOF rewrite operation if any : </td> <td>{{infos.Persistence.aof_current_rewrite_time_sec}}</td> 
                      </tr>
                      <tr>
-                       <td>Status of the last AOF rewrite operation : </td> <td>infos.Persistence.aof_last_bgrewrite_status</td> 
+                       <td>Status of the last AOF rewrite operation : </td> <td>{{infos.Persistence.aof_last_bgrewrite_status}}</td> 
                      </tr>
                 </table>
       </div>

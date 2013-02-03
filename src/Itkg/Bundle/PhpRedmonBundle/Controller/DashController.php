@@ -29,7 +29,6 @@ class DashController extends BaseController
             
             if($worker->ping()) {
                 $infos = $worker->getInfos();
-                
                 $slowLogs = $worker->getSlowLogs();
                 $keySpace = $worker->getKeyspace();
                 

@@ -39,7 +39,7 @@ knp_gaufrette:
     adapters:
         phpredmon:
             local:
-                directory: /var/phpredmon/datas
+                directory: "%kernel.root_dir%/Resources/phpredmon/datas"
                 create: true
     filesystems:
         phpredmon:
