@@ -34,14 +34,10 @@ class MainController extends BaseController
     
     public function infosAction()
     {
-        $instance = $this->getCurrentInstance();
-        $worker = $this->getWorker()->setInstance($instance);
-        $infos = $worker->getInfos();
-        
         return $this->render(
             $this->getTemplatePath().'infos.html.twig',
             array(
-                'infos'  => $infos
+                'infos'  => $this->getWorker()->getInfos()
             )
         );
     }

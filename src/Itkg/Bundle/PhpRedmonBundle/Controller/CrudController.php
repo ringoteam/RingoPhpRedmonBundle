@@ -54,11 +54,11 @@ class CrudController extends BaseController
             if ($form->isValid()) {
                 
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('success', 'Instance Redis ajouté avec succès');
+                $this->get('session')->setFlash('success', 'Instance Redis created successfully');
 
                 return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
-                $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
+                $this->get('session')->setFlash('error', 'Some errors found');
 
             }
         }
@@ -95,11 +95,11 @@ class CrudController extends BaseController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('success', 'Instance Redis modifié avec succès');
+                $this->get('session')->setFlash('success', 'Instance Redis updated successfully');
 
                 return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
-                $this->get('session')->setFlash('error', 'Des erreurs ont été trouvées');
+                $this->get('session')->setFlash('error', 'Some errors found');
 
             }
         }
@@ -116,14 +116,15 @@ class CrudController extends BaseController
     
     public function deleteAction($id)
     {
-        // @TODO : finir cette partie
-        $this->getManager()->delete($id);
-        $this->get('session')->setFlash('notice', 'Instance Redis modifié avec succès');
-
-        return $this->render(
-            $this->getTemplatePath().'index.html.twig',
-            array()
-        );
+        $instance = $this->getManager()->find($id);
+        if($instance) {
+            $this->getManager()->delete($instance);
+            $this->get('session')->setFlash('success', 'Instance Redis has been deleted successfully');
+        }else {
+            $this->get('session')->setFlash('error', 'This instance does not exist');
+        }
+        
+        return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
     }
     
     protected function getTemplatePath()

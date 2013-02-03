@@ -2,16 +2,16 @@
 
 {% block main %}
     {% if instances %}
-        <h2>Veuillez séléectionner une instance Redis</h2>
+        <h2>Please, choose a Redis Instance</h2>
         
         <table  class="table table-striped">
             <thead>
                 <tr>
-                    <th>Libellé</th>
+                    <th>Name</th>
                     <th>Host</th>
                     <th>Port</th>
-                    <th>Etat</th>
-                    <th>Actions</th>
+                    <th>State</th>
+                    <th>Action(s)</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,16 +22,16 @@
                         <td>{{ instance.port }}</td>
                         <td></td>
                         <td>
-                            <a href="{{ path('itkg_php_redmon_instance_select', {'id': instance.id}) }}">Séléectionner</a>
+                            <a href="{{ path('itkg_php_redmon_instance_select', {'id': instance.id}) }}">Choose</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <h2>Aucune instance Redis n'a été trouvée</h2>
+        <h2>No redis instance found</h2>
     {% endif %}
-    <p>Pour ajouter une instance Redis, <a href="{{ path('itkg_php_redmon_instance_new') }}">cliquez ici</a></p>
+    <p>To add a Redis Instance, <a href="{{ path('itkg_php_redmon_instance_new') }}">click here</a></p>
 {% endblock %}    
 
 
@@ -40,7 +40,7 @@
         <div class="well well-large add_link">
             <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}">
                 <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/>
-                <strong>Ajouter une instance</strong></a>
+                <strong>Add an instance</strong></a>
         </div>
     </div>
 {% endblock %} 

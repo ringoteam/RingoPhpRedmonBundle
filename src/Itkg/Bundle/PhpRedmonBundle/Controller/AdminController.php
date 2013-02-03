@@ -29,13 +29,11 @@ class AdminController extends BaseController
     public function flushAllAction()
     {
         try {
-            $this->getWorker()->setInstance(
-                $this->getCurrentInstance()
-            )->execute('flushAll');
+            $this->getWorker()->execute('flushAll');
             
-            $this->get('session')->setFlash('success', 'Flush ALL effectué avec succès');
+            $this->get('session')->setFlash('success', 'Flush ALL executed successfully');
         }catch(\Exception $e) {
-            $this->get('session')->setFlash('success', 'Une erreur s\'est produite : '.$e->getMessage());
+            $this->get('session')->setFlash('success', 'We have encountered an error : '.$e->getMessage());
         }
         
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
@@ -43,13 +41,10 @@ class AdminController extends BaseController
     
     public function flushDbAction($id)
     {
-        $instance = $this->getCurrentInstance();
         try {
-            $this->getWorker()->setInstance(
-                $instance
-            )->flushDB($id);
+            $worker = $this->getWorker()->flushDB($id);
             
-            $this->get('session')->setFlash('success', 'Flush DB sur '.$instance->getDatabase($id)->getName().' effectué avec succès');
+            $this->get('session')->setFlash('success', 'Flush DB on '.$worker->getInstance()->getDatabase($id)->getName().' executed successfully');
         }catch(\Exception $e) {
             $this->get('session')->setFlash('success', 'Une erreur s\'est produite : '.$e->getMessage());
         }

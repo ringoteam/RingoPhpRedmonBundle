@@ -25,20 +25,17 @@ class DashController extends BaseController
         $instance = $this->getCurrentInstance();
         if($instance) {
             
-            $worker = $this->getWorker()->setInstance($instance);
+            $worker = $this->getWorker();
             
             if($worker->ping()) {
-                $infos = $worker->getInfos();
-                $slowLogs = $worker->getSlowLogs();
-                $keySpace = $worker->getKeyspace();
                 
                 return $this->render(
                     $this->getTemplatePath().'index.html.twig',
                     array(
-                        'instance' => $instance,
-                        'infos'    => $infos,
-                        'slowLogs'  => $slowLogs,
-                        'keyspace'  => $keySpace
+                        'instance' => $worker->getInstance(),
+                        'infos'    => $worker->getInfos(),
+                        'slowLogs'  => $worker->getSlowLogs(),
+                        'keyspace'  => $worker->getKeyspace()
                     )
                 );
             }
@@ -52,7 +49,6 @@ class DashController extends BaseController
             );
         }
         
-        
         return $this->render(
             $this->getTemplatePath().'choose.html.twig',
             array(
@@ -63,32 +59,26 @@ class DashController extends BaseController
     
     public function clientAction()
     {
-        $instance = $this->getCurrentInstance();
-        
-        $worker = $this->getWorker()->setInstance($instance);
-        $clients = $worker->getClients();
+        $worker = $this->getWorker();
         
         return $this->render(
             $this->getTemplatePath().'client.html.twig',
             array(
-                'instance' => $instance,
-                'clients'=> $clients
+                'instance' => $worker->getInstance(),
+                'clients'=> $worker->getClients()
             )
         );
     }
     
     public function configurationAction()
     {
-        $instance = $this->getCurrentInstance();
-        
-        $worker = $this->getWorker()->setInstance($instance);
-        $configs = $worker->getConfiguration();
+        $worker = $this->getWorker();
         
         return $this->render(
             $this->getTemplatePath().'configuration.html.twig',
             array(
-                'instance' => $instance,
-                'configs'=> $configs
+                'instance' => $worker->getInstance(),
+                'configs'  => $worker->getConfiguration()
             )
         );
     }
@@ -99,6 +89,9 @@ class DashController extends BaseController
         $instance = $this->getManager()->find($id);
         if($instance) {
             $this->getRequest()->getSession()->set('instance', $instance);
+            $this->get('session')->setFlash('success', 'Instance '.$instance->getName().' selected');
+        }else {
+            $this->get('session')->setFlash('error', 'This instance does not exist');
         }
         
         return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
