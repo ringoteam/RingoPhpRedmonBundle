@@ -20,18 +20,8 @@
     <div class="container-fluid">
         <div class="row">
             {% include 'ItkgPhpRedmonBundle:Main:message.html.twig' %}
-            {% block widget %}
-                <div class="span5 pull-right">
-                    <div class="well well-large add_link">
-                        <a class="black" href="{{ path('itkg_php_redmon_instance_new') }}"><img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/add.png') }}" width="20"/><strong>Ajouter une instance</strong></a>
-                    </div>
-                    <div class="accordion" id="accordion2">
-                        {% render "ItkgPhpRedmonBundle:Main:infos" %}
-                        {% render "ItkgPhpRedmonBundle:Main:administration" %}
-                    </div>
-                </div>
-            {% endblock %}
-            <div class="span12 pull-right">
+           
+            <div class="span12">
                 {% block main %}
 
                 {% endblock%}   
