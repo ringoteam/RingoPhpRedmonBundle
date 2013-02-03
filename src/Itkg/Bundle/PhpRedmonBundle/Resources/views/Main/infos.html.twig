@@ -1,20 +1,11 @@
-<div class="accordion-group well">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#widgetcollapseTwo">
-        Informations
-        <b class="caret pull-right"></b>
-      </a>
-            
-    </div>
-    <div id="widgetcollapseTwo" class="accordion-body collapse">
-      <div class="accordion-inner">
+
         
         <table class="table table-striped">
              <tr>
                    <td>Version : </td> <td>{{infos.Server.redis_version}}</td>    
              </tr> 
               <tr>
-                   <td>Mode : </td> <td>infos.Server.redis_mode</td>    
+                   <td>Mode : </td> <td>{{infos.Server.redis_mode}}</td>    
                 </tr>
             <tr>
                    <td>Uptime (day) : </td> <td>{{infos.Server.uptime_in_days}}</td>  
@@ -38,7 +29,3 @@
                    <td>Total number of commands processed by the server : </td> <td>{{infos.Stats.total_commands_processed}}</td> 
                  </tr>
             </table>
-        
-      </div>
-    </div>
-</div>
