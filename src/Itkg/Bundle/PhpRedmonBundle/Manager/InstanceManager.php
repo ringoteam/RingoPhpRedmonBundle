@@ -75,7 +75,7 @@ class InstanceManager
      */
     public function delete(Instance $instance)
     {
-        $this->instance->remove($instance);
+        $this->em->remove($instance);
     }
     
     /**

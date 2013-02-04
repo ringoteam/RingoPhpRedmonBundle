@@ -20,7 +20,7 @@ itkg_php_redmon_instance_update:
         
 itkg_php_redmon_instance_delete:
     pattern:   /instance/delete/{id}
-    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:index }
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:delete }
     
 itkg_php_redmon_instance_select:
     pattern:   /instance/select/{id}
