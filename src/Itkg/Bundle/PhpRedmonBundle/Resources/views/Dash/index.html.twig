@@ -6,7 +6,7 @@
         
 <div class="span5">
          <ul class="breadcrumb">
-                    <li>Infos</li>
+                   <li>Infos</li>
          </ul>
        <table class="table table-striped">
              <tr>
@@ -401,9 +401,9 @@ d3.tsv("/bundles/itkgphpredmon/js/data.tsv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Temperature (ºF)");
+      .text("Memory (Ko)");
 
-  var city = svg.selectAll(".city")
+  var city = svg.selectAll(".memory")
       .data(cities)
     .enter().append("g")
       .attr("class", "city");

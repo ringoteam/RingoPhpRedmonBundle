@@ -28,6 +28,7 @@ class DashController extends BaseController
     public function indexAction()
     {
         $instance = $this->getCurrentInstance();
+        var_dump($instance);
         if($instance) {
             
             $worker = $this->getWorker();
@@ -47,6 +48,7 @@ class DashController extends BaseController
         }
         // Get all instances
         $instances = $this->getManager()->findAll();
+        
         $worker = $this->get('itkg_php_redmon.instance_worker');
         if(is_array($instances)) {
             foreach($instances as $index => $instance) {

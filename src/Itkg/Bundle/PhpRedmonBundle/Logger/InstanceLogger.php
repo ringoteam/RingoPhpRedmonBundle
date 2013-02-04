@@ -147,20 +147,23 @@ class InstanceLogger
      */
     protected function log()
     {
+
         $this->worker
             ->setInstance($this->instance);
         // If instance can be called
         if($this->worker->ping()) {
             $infos = $this->worker->getInfos();
             $createdAt = new \DateTime();
-
+            $graphInfo = array();
+            $graphInfo['memory'] = $infos['Memory']['used_memory'];
             $log = new Log();
             $log->setCreatedAt($createdAt);
             // Log infos
-            $log->setDatas($infos);
+            $log->setDatas($graphInfo);
             // Add log
             $this->instance->addLog($log);
         }
+
     }
     
     /**
