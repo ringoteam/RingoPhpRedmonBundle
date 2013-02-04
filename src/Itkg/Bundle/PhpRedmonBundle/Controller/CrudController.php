@@ -56,7 +56,7 @@ class CrudController extends BaseController
 
                 return new RedirectResponse($this->generateUrl('itkg_php_redmon'));
             }else {
-                $this->get('session')->setFlash('error', 'Some errors found');
+                $this->get('session')->setFlash('error', 'Some errors have been found');
 
             }
         }
