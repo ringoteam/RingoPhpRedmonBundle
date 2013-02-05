@@ -31,7 +31,7 @@ class InstanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('id', 'hidden');
-        $builder->add('name', 'text', array('label' => 'Libellé'));
+        $builder->add('name', 'text');
         $builder->add('host', 'text');
         $builder->add('port', 'text');
         
