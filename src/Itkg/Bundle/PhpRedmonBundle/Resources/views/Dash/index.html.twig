@@ -295,13 +295,15 @@
                        <th>number of keys with an expiration</th>
                     </thead>
                 {% for key,space in keyspace %}
-                <tr>
+                
                     {% for key,item in space %}
+                    <tr>
                     <td>{{key}}</td>
                     <td>{{item.keys}}</td>
                     <td>{{item.expires}}</td>
+                     </tr>
+
                     {% endfor %}
-                </tr>
                 {% endfor %}
                 </table>
             </div>    
