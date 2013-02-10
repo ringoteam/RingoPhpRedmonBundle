@@ -28,12 +28,11 @@ class DashController extends BaseController
     public function indexAction()
     {
         $instance = $this->getCurrentInstance();
-        var_dump($instance);
         if($instance) {
             
             $worker = $this->getWorker();
             // Worker can be undefined if server went away
-            // For the current instance or if we have no instance selected
+            // For the current instance or if there is no instance selected
             if($worker) {
                 return $this->render(
                     $this->getTemplatePath().'index.html.twig',
@@ -46,25 +45,8 @@ class DashController extends BaseController
                 );
             }
         }
-        // Get all instances
-        $instances = $this->getManager()->findAll();
         
-        $worker = $this->get('itkg_php_redmon.instance_worker');
-        if(is_array($instances)) {
-            foreach($instances as $index => $instance) {
-                // Ping server and get potential error message
-                $working = $worker->setInstance($instance)->ping();
-                $instances[$index]->setWorking($working);
-                $instances[$index]->setError($worker->getMessage());
-            }
-        }
-        
-        return $this->render(
-            $this->getTemplatePath().'choose.html.twig',
-            array(
-                'instances' => $instances 
-            )
-         );
+        return new RedirectResponse($this->generateUrl('itkg_php_redmon_instances'));
     }
     
     /**
@@ -125,7 +107,11 @@ class DashController extends BaseController
         // If instance exists
         if($instance) {
             $this->getRequest()->getSession()->set('instance', $instance);
-            $this->get('session')->setFlash('success', 'Instance '.$instance->getName().' selected');
+            if($this->getWorker()) {
+                $this->get('session')->setFlash('success', 'Instance '.$instance->getName().' selected');
+            }else {
+                $this->get('session')->setFlash('error', 'Instance '.$instance->getName().' cannot be selected');
+            }
         }else {
             $this->get('session')->setFlash('error', 'This instance does not exist');
         }

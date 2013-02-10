@@ -18,6 +18,10 @@ itkg_php_redmon_instance_update:
     requirements:
         _method:  POST
         
+itkg_php_redmon_instances:
+    pattern:   /instances
+    defaults:  { _controller: ItkgPhpRedmonBundle:Crud:index }
+    
 itkg_php_redmon_instance_delete:
     pattern:   /instance/delete/{id}
     defaults:  { _controller: ItkgPhpRedmonBundle:Crud:delete }

@@ -13,13 +13,13 @@
             {% if instance != null %}
                 <li {% if route == 'itkg_php_redmon_instance_client' %}class="active"{% endif %}><a href="{{ path('itkg_php_redmon_instance_client') }}">Clients</a></li>
                 <li {% if route == 'itkg_php_redmon_instance_configuration' %}class="active"{% endif %}><a href="{{ path('itkg_php_redmon_instance_configuration') }}">Configuration</a></li>
-                <li><a href="">Console</a></li>
-                <li {% if route == 'itkg_php_redmon_instance_edit' %}class="active"{% endif %}><a href="{{ path('itkg_php_redmon_instance_edit', {'id': instance.id}) }}">Administration</a></li>
+                <!-- <li><a href="">Console</a></li> -->
+                <li {% if route == 'itkg_php_redmon_instances' %}class="active"{% endif %}><a href="{{ path('itkg_php_redmon_instances') }}">Administration</a></li>
             {% else %}
                 <li class="disabled"><a href="#">Clients</a></li>
                 <li class="disabled"><a href="#">Configuration</a></li>
-                <li class="disabled"><a href="#">Console</a></li>
-                <li class="disabled"><a href="#">Administration</a></li>
+             <!--   <li class="disabled"><a href="#">Console</a></li> -->
+                <li><a href="{{ path('itkg_php_redmon_instances') }}">Administration</a></li>
             {% endif %}
           </ul>
           <ul class="nav pull-right">

@@ -21,6 +21,36 @@ use Itkg\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
  */
 class CrudController extends BaseController
 {
+    
+    /**
+     * List of instances action
+     * 
+     * @return mixed
+     */
+    public function indexAction()
+    {
+        // Get all instances
+        $instances = $this->getManager()->findAll();
+        
+        $worker = $this->get('itkg_php_redmon.instance_worker');
+        if(is_array($instances)) {
+            foreach($instances as $index => $instance) {
+                // Ping server and get potential error message
+                $working = $worker->setInstance($instance)->ping();
+                $instances[$index]->setWorking($working);
+                $instances[$index]->setError($worker->getMessage());
+            }
+        }
+        
+        return $this->render(
+            $this->getTemplatePath().'index.html.twig',
+            array(
+                'instances' => $instances 
+            )
+        );
+    }
+    
+    
     /**
      * New instance action
      * 
