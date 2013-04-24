@@ -1,4 +1,4 @@
-{% extends 'ItkgPhpRedmonBundle::base.html.twig' %}
+{% extends 'ItkgPhpRedmonBundle::crud.html.twig' %}
 
 {% block main %}
     
@@ -41,7 +41,7 @@
 {% endblock %} 
         
 {% block widget %}
-    <div class="span5 pull-right">
+    <div class="span3 pull-right">
         <div class="well well-large add_link">
             <a class="black" href="{{ path('itkg_php_redmon_instance_delete', {'id': id}) }}">
                 <img class="pull-left" src="{{ asset('/bundles/itkgphpredmon/images/del.png') }}" width="20"/>
