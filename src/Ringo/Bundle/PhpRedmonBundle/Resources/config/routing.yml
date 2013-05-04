@@ -1,0 +1,52 @@
+ringo_php_redmon_instance_new:
+    pattern:   /instance/new
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:new }
+
+ringo_php_redmon_instance_create:
+    pattern:   /instance/create
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:create }
+    requirements:
+        _method:  POST
+        
+ringo_php_redmon_instance_edit:
+    pattern:   /instance/edit/{id}
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:edit }
+    
+ringo_php_redmon_instance_update:
+    pattern:   /instance/update/{id}
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:update }
+    requirements:
+        _method:  POST
+        
+ringo_php_redmon_instances:
+    pattern:   /instances
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:index }
+    
+ringo_php_redmon_instance_delete:
+    pattern:   /instance/delete/{id}
+    defaults:  { _controller: RingoPhpRedmonBundle:Crud:delete }
+    
+ringo_php_redmon_instance_select:
+    pattern:   /instance/select/{id}
+    defaults:  { _controller: RingoPhpRedmonBundle:Dash:select }
+
+ringo_php_redmon_instance_client:
+    pattern:   /clients
+    defaults:  { _controller: RingoPhpRedmonBundle:Dash:client }
+
+ringo_php_redmon_instance_configuration:
+    pattern:   /configuration
+    defaults:  { _controller: RingoPhpRedmonBundle:Dash:configuration }
+
+
+ringo_php_redmon:
+    pattern:   /
+    defaults:  { _controller: RingoPhpRedmonBundle:Dash:index }
+    
+ringo_php_redmon_admin_flushdb:
+    pattern:   /admin/flush-db/{id}
+    defaults:  { _controller: RingoPhpRedmonBundle:Admin:flushDb }
+
+ringo_php_redmon_admin_flushall:
+    pattern:   /admin/flush-all
+    defaults:  { _controller: RingoPhpRedmonBundle:Admin:flushAll }

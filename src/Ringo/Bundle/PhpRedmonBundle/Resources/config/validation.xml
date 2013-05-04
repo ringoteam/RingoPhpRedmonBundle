@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+   
+    <class name="Ringo\Bundle\PhpRedmonBundle\Model\Instance">
+        <property name="name">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="host">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="port">
+            <constraint name="NotBlank"/>
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">65635</option>
+                <option name="minMessage">Port must be an integer between 1 and 65635</option>
+                <option name="maxMessage">Port must be an integer between 1 and 65635</option>
+                <option name="invalidMessage">Port must be an integer between 1 and 65635</option>
+            </constraint>
+        </property>
+    </class>
+    <class name="Ringo\Bundle\PhpRedmonBundle\Model\Database">
+        <property name="name">
+            <constraint name="NotBlank"/>
+        </property>
+    </class>
+</constraint-mapping>

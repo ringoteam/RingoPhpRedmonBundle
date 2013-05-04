@@ -1,0 +1,60 @@
+{% extends 'RingoPhpRedmonBundle::crud.html.twig' %}
+
+{% block main %}
+    {% if instances %}
+        <h2>Please, choose a Redis Instance</h2>
+        
+        <table  class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Host</th>
+                    <th>Port</th>
+                    <th>State</th>
+                    <th>Message</th>
+                    <th>Action(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for instance in instances %}
+                    <tr>
+                        <td>{{ instance.name }}</td>
+                        <td>{{ instance.host }}</td>
+                        <td>{{ instance.port }}</td>
+                        <td>
+                            {% if instance.isWorking() %}
+                                <img width="30" src="{{ asset('/bundles/ringophpredmon/images/green.png') }}" />
+                            {% else %}
+                                <img  width="30"  src="{{ asset('/bundles/ringophpredmon/images/red.png') }}" />
+                            {% endif %}
+                        </td>
+                        <td>{{ instance.error }}</td>
+                        <td>
+                            {% if instance.isWorking() %}
+                                <a href="{{ path('ringo_php_redmon_instance_select', {'id': instance.id}) }}">Choose</a> | 
+                                <a href="{{ path('ringo_php_redmon_instance_edit', {'id': instance.id}) }}">Edit</a>
+                            {% else %}
+                                <a href="{{ path('ringo_php_redmon_instance_edit', {'id': instance.id}) }}">Edit</a>
+                            {% endif %}
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No redis instance found</h2>
+    {% endif %}
+    <p>To add a Redis Instance, <a href="{{ path('ringo_php_redmon_instance_new') }}">click here</a></p>
+{% endblock %}    
+
+
+{% block widget %}
+    <div class="span3 pull-right">
+        <div class="well well-large add_link">
+            <a class="black" href="{{ path('ringo_php_redmon_instance_new') }}">
+                <img class="pull-left" src="{{ asset('/bundles/ringophpredmon/images/add.png') }}" width="20"/>
+                <strong>Add an instance</strong></a>
+        </div>
+    </div>
+{% endblock %} 

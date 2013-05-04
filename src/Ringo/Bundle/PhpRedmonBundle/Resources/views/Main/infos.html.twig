@@ -1,0 +1,31 @@
+
+        
+        <table class="table table-striped">
+             <tr>
+                   <td>Version : </td> <td>{{infos.Server.redis_version}}</td>    
+             </tr> 
+              <tr>
+                   <td>Mode : </td> <td>{{infos.Server.redis_mode}}</td>    
+                </tr>
+            <tr>
+                   <td>Uptime (day) : </td> <td>{{infos.Server.uptime_in_days}}</td>  
+                </tr>
+                <tr>
+                   <td>Nbr : </td> <td>{{infos.Clients.connected_clients}}</td>    
+                </tr> 
+                 <tr>
+                   <td>Number of clients pending on a blocking call : </td> <td>{{infos.Clients.blocked_clients}}</td>  
+                </tr>
+             <tr>
+                   <td>Used memory : </td> <td>{{infos.Memory.used_memory_human}}</td> 
+                 </tr>
+                 <tr>
+                   <td>Used memory peak: </td> <td>{{infos.Memory.used_memory_peak_human}}</td>    
+                </tr>
+                <tr>
+                   <td>Total number of connections accepted by the server : </td> <td>{{infos.Stats.total_connections_received}}</td> 
+                 </tr>
+                  <tr>
+                   <td>Total number of commands processed by the server : </td> <td>{{infos.Stats.total_commands_processed}}</td> 
+                 </tr>
+            </table>
