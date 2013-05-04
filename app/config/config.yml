@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    
+
 framework:
     #esi:             ~
     #translator:      { fallback: "%locale%" }
@@ -45,7 +45,7 @@ knp_gaufrette:
         phpredmon:
             adapter:    phpredmon
             alias:      phpredmon_filesystem
-            
-itkg_php_redmon: 
+
+ringo_php_redmon: 
     log:
         days: 30

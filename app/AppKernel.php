@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Itkg\Bundle\PhpRedmonBundle\ItkgPhpRedmonBundle(),
+            new Ringo\Bundle\PhpRedmonBundle\RingoPhpRedmonBundle(),
 
         );
 
