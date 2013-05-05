@@ -13,7 +13,6 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
-/**
  * Classe Configuration
  *
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>

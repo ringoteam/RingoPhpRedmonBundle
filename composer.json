@@ -1,40 +1,33 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
-    "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
-        "twig/extensions": "1.0.*@dev",
-        "symfony/assetic-bundle": "2.1.*",
-        "symfony/monolog-bundle": "2.1.*",
-        "sensio/distribution-bundle": "2.1.*",
-        "sensio/framework-extra-bundle": "2.1.*",
-        "sensio/generator-bundle": "2.1.*",
-        "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*",
-        "kriswallsmith/assetic": "1.1.*@dev",
-	"knplabs/knp-gaufrette-bundle": "*",
+    "name":         "ringoteam/phpredmon-bundle",
+    "type":         "symfony-bundle",
+    "description":  "Redis monitoring bundle",
+    "keywords":     ["redis", "monitoring"],
+    "homepage":     "http://github.com/ringoteam/PhpRedmonBundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Patrick Derouabaix",
+            "email":    "patrick.deroubaix@gmail.com"
+        },
+        {
+            "name":     "Pascal Denis",
+            "email":    "pascal.denis.75@gmail.com"
+        }
+    ],
+    "require":      {
+        "knplabs/knp-gaufrette-bundle": "*",
         "predis/predis": "dev-master"
     },
-    "scripts": {
-        "post-install-cmd": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-        ],
-        "post-update-cmd": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-        ]
+    "require-dev": {
+        "knplabs/knp-gaufrette-bundle": "*",
+        "predis/predis": "dev-master",
+        "phpunit/phpunit": "3.7.*"
     },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
-    }
+    "autoload":     {
+        "psr-0": {
+            "Ringo\\Bundle\\PhpRedmonBundle": "src"
+        }
+    },
+    "target-dir":   "Ringo/Bundle/PhpRedmonBundle"
 }

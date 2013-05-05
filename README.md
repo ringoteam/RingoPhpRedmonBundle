@@ -2,5 +2,5 @@
 PhpRedmonBundle
 ===============
 
-A Redis monitoring Bundle
+Redis monitoring Bundle
 
