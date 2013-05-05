@@ -26,7 +26,7 @@
     },
     "autoload":     {
         "psr-0": {
-            "Ringo\\Bundle\\PhpRedmonBundle": "src"
+            "Ringo\\Bundle\\PhpRedmonBundle": ""
         }
     },
     "target-dir":   "Ringo/Bundle/PhpRedmonBundle"
