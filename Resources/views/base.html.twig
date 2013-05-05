@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Php Redmon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/ringophpredmon/css/bootstrap.min.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ringophpredmon/css/bootstrap-responsive.css') }}" rel="stylesheet">    
+    <link rel="stylesheet" href="{{ asset('/bundles/ringophpredmon/css/style.css') }}" rel="stylesheet">
+
+
+{% endblock %}
+      </head>
+ 
+    <body>
+    {% block nav %}
+        {% render "RingoPhpRedmonBundle:Main:navigation" with {'route': app.request.attributes.get('_route')} %}
+    {% endblock %}
+            
+    <div class="container-fluid">
+        <div class="row">
+            {% include 'RingoPhpRedmonBundle:Main:message.html.twig' %}
+           
+            <div class="span12">
+                {% block main %}
+
+                {% endblock%}   
+            </div>
+            {% block widget %}
+            {% endblock%}   
+                
+        </div>
+    </div>
+{% block javascript %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{ asset('/bundles/ringophpredmon/js/bootstrap.min.js ') }}"></script>
+    <script src="{{ asset('/bundles/ringophpredmon/js/phpredmon.js ') }}"></script>
+{% endblock %}
+  </body>
+</html>

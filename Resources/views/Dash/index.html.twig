@@ -1,0 +1,340 @@
+{% extends 'RingoPhpRedmonBundle::base.html.twig' %}
+
+{% block main %}
+   
+   
+        
+<div class="span5">
+         <ul class="breadcrumb">
+                   <li>Infos</li>
+         </ul>
+       <table class="table table-striped">
+             <tr>
+                   <td>Version : </td> <td>{{infos.Server.redis_version}}</td>    
+             </tr> 
+              <tr>
+                   <td>Mode : </td> <td>{{infos.Server.redis_mode}}</td>    
+                </tr>
+            <tr>
+                   <td>Uptime (day) : </td> <td>{{infos.Server.uptime_in_days}}</td>  
+                </tr>
+                <tr>
+                   <td>Nbr : </td> <td>{{infos.Clients.connected_clients}}</td>    
+                </tr> 
+                 <tr>
+                   <td>Number of clients pending on a blocking call : </td> <td>{{infos.Clients.blocked_clients}}</td>  
+                </tr>
+             <tr>
+                   <td>Used memory : </td> <td>{{infos.Memory.used_memory_human}}</td> 
+                 </tr>
+                 <tr>
+                   <td>Used memory peak: </td> <td>{{infos.Memory.used_memory_peak_human}}</td>    
+                </tr>
+                <tr>
+                   <td>Total number of connections accepted by the server : </td> <td>{{infos.Stats.total_connections_received}}</td> 
+                 </tr>
+                  <tr>
+                   <td>Total number of commands processed by the server : </td> <td>{{infos.Stats.total_commands_processed}}</td> 
+                 </tr>
+            </table>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Server:
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+          <table class="table table-striped">
+                    <tr>
+                       <td>Version : </td> <td>{{infos.Server.redis_version}}</td>    
+                    </tr> 
+                    <tr>
+                       <td>Mode : </td> <td>{{infos.Server.redis_mode}}</td>    
+                    </tr>
+                    <tr>
+                       <td>OS : </td> <td>{{infos.Server.os}}</td>    
+                    </tr>
+                    <tr>
+                       <td>Port : </td> <td>{{infos.Server.tcp_port}}</td>  
+                    </tr>
+                    <tr>
+                       <td>Uptime (day) : </td> <td>{{infos.Server.uptime_in_days}}</td>  
+                    </tr>
+                </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Clients:
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>Nbr : </td> <td>{{infos.Clients.connected_clients}}</td>    
+                    <tr> 
+                       <td>longest output list : </td> <td>{{infos.Clients.client_longest_output_list}}</td>    
+                    </tr>
+                    <tr>
+                       <td>biggest input buffe : </td> <td>{{infos.Clients.client_biggest_input_buf}}</td>    
+                    </tr>
+                    <tr>
+                       <td>Number of clients pending on a blocking call : </td> <td>{{infos.Clients.blocked_clients}}</td>  
+                    </tr>
+                </table>
+      </div>
+    </div>
+  </div>
+    <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        Memory:
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>Used memory : </td> <td>{{infos.Memory.used_memory_human}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Used memory peak: </td> <td>{{infos.Memory.used_memory_peak_human}}</td>    
+                    </tr>
+                    <tr> 
+                       <td>Used memory rss : </td> <td>{{infos.Memory.used_memory_rss}}</td>    
+                    </tr>
+                    <tr> 
+                       <td>Used memory lua : </td> <td>{{infos.Memory.used_memory_lua}}</td>    
+                    </tr>
+                    <tr> 
+                       <td>Fragmentation ratio: </td> <td>{{infos.Memory.mem_fragmentation_ratio}}</td>    
+                    </tr>
+                </table>
+      </div>
+    </div>
+  </div>
+ <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+        Persistence :
+      </a>
+    </div>
+ 
+    <div id="collapseFour" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>loading : </td> <td>{{infos.Persistence.loading}}</td> 
+                     </tr>
+                     <tr>
+                      <tr>
+                       <td>Number of changes since the last dump : </td> <td>{{infos.Persistence.rdb_changes_since_last_save}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Bgsave in progress : </td> <td>{{infos.Persistence.rdb_bgsave_in_progress}}</td> 
+                     </tr>
+                      <tr>
+                       <td>last successful RDB save : </td> <td>{{infos.Persistence.rdb_last_save_time}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Status of the last RDB save operation : </td> <td>{{infos.Persistence.rdb_last_bgsave_status}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Duration of the last RDB save operation in seconds : </td> <td>{{infos.Persistence.rdb_last_bgsave_time_sec}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Duration of the on-going RDB save operation if any : </td> <td>{{infos.Persistence.rdb_current_bgsave_time_sec}}</td> 
+                     </tr>
+                      <tr>
+                       <td>AOF logging is activated : </td> <td>{{infos.Persistence.aof_enabled}}</td> 
+                     </tr>
+                      <tr>
+                       <td>AOF rewrite operation is on-going : </td> <td>{{infos.Persistence.aof_rewrite_in_progress}}</td> 
+                     </tr>
+                      <tr>
+                       <td> AOF rewrite operation will be scheduled  : </td> <td>{{infos.Persistence.aof_rewrite_scheduled}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Duration of the last AOF rewrite operation in seconds : </td> <td>{{infos.Persistence.aof_last_rewrite_time_sec}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Duration of the on-going AOF rewrite operation if any : </td> <td>{{infos.Persistence.aof_current_rewrite_time_sec}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Status of the last AOF rewrite operation : </td> <td>{{infos.Persistence.aof_last_bgrewrite_status}}</td> 
+                     </tr>
+                </table>
+      </div>
+    </div>
+  </div> 
+    <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+        stats:
+      </a>
+    </div>
+    <div id="collapseFive" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>Total number of connections accepted by the server : </td> <td>{{infos.Stats.total_connections_received}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Total number of commands processed by the server : </td> <td>{{infos.Stats.total_commands_processed}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Number of commands processed per second : </td> <td>{{infos.Stats.instantaneous_ops_per_sec}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Number of connections rejected because of maxclients limit : </td> <td>{{infos.Stats.rejected_connections}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Total number of key expiration events : </td> <td>{{infos.Stats.expired_keys}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Number of evicted keys due to maxmemory limit : </td> <td>{{infos.Stats.evicted_keys}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Number of successful lookup of keys in the main dictionary: </td> <td>{{infos.Stats.keyspace_hits}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Number of failed lookup of keys in the main dictionary : </td> <td>{{infos.Stats.keyspace_misses}}</td> 
+                     </tr>
+                      <tr>
+                       <td>Global number of pub/sub channels with client subscriptions : </td> <td>{{infos.Stats.pubsub_channels}}</td> 
+                     </tr>
+                    <tr>
+                       <td>Global number of pub/sub pattern with client subscriptions : </td> <td>{{infos.Stats.pubsub_patterns}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Duration of the latest fork operation in microseconds : </td> <td>{{infos.Stats.latest_fork_usec}}</td> 
+                     </tr>
+                </table>
+      </div>
+    </div>
+  </div>
+<div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+        Replication:
+      </a>
+    </div>
+    <div id="collapseSix" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>Role : </td> <td>{{infos.Replication.role}}</td> 
+                     </tr>
+                   <tr>
+                       <td>Connected slaves : </td> <td>{{infos.Replication.connected_slaves}}</td> 
+                     </tr>
+                     {% if infos.Replication.role == 'Slave' %}
+                     <tr>
+                       <td>Host or IP address of the master : </td> <td>{{infos.Replication.master_host}}</td> 
+                     </tr>
+                      
+                     <tr>
+                       <td>Master listening TCP port : </td> <td>{{infos.Replication.master_port}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Status of the link (up/down) : </td> <td>{{infos.Replication.master_link_status}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Number of seconds since the last interaction with master : </td> <td>{{infos.Replication.master_last_io_seconds_ago}}</td> 
+                     </tr>
+                     <tr>
+                       <td>Indicate the master is SYNCing to the slave : </td> <td>{{infos.Replication.master_sync_in_progress}}</td> 
+                     </tr>
+                     {% endif %}
+                </table>
+      </div>
+    </div>
+  </div>
+<div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+        CPU :
+      </a>
+    </div>
+    <div id="collapseSeven" class="accordion-body collapse">
+      <div class="accordion-inner">
+                  <table class="table table-striped">
+                    <tr>
+                       <td>System CPU consumed by the Redis server : </td> <td>{{infos.CPU.used_cpu_sys}}</td> 
+                     </tr>
+                     <tr>
+                       <td>User CPU consumed by the Redis server : </td> <td>{{infos.CPU.used_cpu_user}}</td> 
+                     </tr>
+                     <tr>
+                       <td>System CPU consumed by the background processes : </td> <td>{{infos.CPU.used_cpu_sys_children}}</td> 
+                     </tr>
+                     <tr>
+                       <td>User CPU consumed by the background processes : </td> <td>{{infos.CPU.used_cpu_user_children}}</td> 
+                     </tr>
+                </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="span6">           
+         <!-- db -->
+         <div class="span6">
+               <ul class="breadcrumb">
+                    <li>Databases</li>
+                </ul>
+                <table class="table table-striped">
+                    <thead>
+                        <th>DB :</th>
+                       <th>number of keys :</th>
+                       <th>number of keys with an expiration</th>
+                    </thead>
+                {% for key,space in keyspace %}
+                
+                    {% for key,item in space %}
+                    <tr>
+                    <td>{{key}}</td>
+                    <td>{{item.keys}}</td>
+                    <td>{{item.expires}}</td>
+                     </tr>
+
+                    {% endfor %}
+                {% endfor %}
+                </table>
+            </div>    
+         <!-- graph -->
+        <div class="span7">
+        <style>
+
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+</style>
+    
+        
+        
+        </div>
+        <!-- /graph -->
+  
+{% endblock %}
