@@ -163,7 +163,6 @@ class InstanceLogger
             // Add log
             $this->instance->addLog($log);
         }
-
     }
     
     /**

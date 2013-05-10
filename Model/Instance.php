@@ -94,7 +94,7 @@ class Instance
      */
     public function removeDatabase(Database $database) 
     {
-        $this->getDatabases()->remove($database);
+        $this->getDatabases()->removeElement($database);
     }
     
     /**
@@ -114,7 +114,7 @@ class Instance
      */
     public function removeLog(Log $log)
     {
-        $this->getLogs()->remove($log);
+        $this->getLogs()->removeElement($log);
     }
     
     /**

@@ -12,7 +12,7 @@ namespace Ringo\Bundle\PhpRedmonBundle\Serializer;
 /**
  * Class EntitySerializer
  *
- * Save entity in serialize format
+ * Save entity in serialize format into a file
  * 
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
@@ -60,7 +60,7 @@ class EntitySerializer
     {
         $key = $this->getHash().$id;
         if($this->getFileManager()->has($key)) {
-            return $this->_loadEntity($key);
+            return $this->loadEntity($key);
         }
         
         return null;
@@ -74,7 +74,7 @@ class EntitySerializer
     public function persist($object)
     {
         if(!$object->getId()) {
-            $object->setId($this->_getNextId());
+            $object->setId($this->getNextId());
         }
         $key = $this->getHash().$object->getId();
         $content = serialize($object);
@@ -82,28 +82,6 @@ class EntitySerializer
         $this->getFileManager()->write($key, $content, true);
     }
     
-    /**
-     * Get next ID for an object class
-     * 
-     * @return int
-     */
-    protected function _getNextId()
-    {
-        $keys = $this->getFileManager()->keys();
-        $ids = array();
-        foreach($keys as $key) {
-            if(preg_match('/^'.$this->getHash().'/', $key)) {
-                $ids[] = str_replace($this->getHash(), '', $key);
-            }
-        }
-        if(empty($ids)) {
-            return 1;
-        }
-        
-        $maxId = max($ids);
-        
-        return $maxId + 1;
-    }
     
     /**
      * Find all entities for a specific class
@@ -117,7 +95,7 @@ class EntitySerializer
         if(is_array($keys)) {
             foreach($keys as $key) {
                 if(preg_match('/^'.$this->getHash().'/', $key)) {
-                    $entities[] = $this->_loadEntity($key);
+                    $entities[] = $this->loadEntity($key);
                 }
             }
         }
@@ -205,7 +183,7 @@ class EntitySerializer
      * @param string $key
      * @return mixed|null
      */
-    protected function _loadEntity($key)
+    protected function loadEntity($key)
     {
         $content = $this->getFileManager()->read($key);
         if($content) {
@@ -213,5 +191,28 @@ class EntitySerializer
         }
         
         return null;
+    }
+
+    /**
+     * Get next ID for an object class
+     * 
+     * @return int
+     */
+    protected function getNextId()
+    {
+        $keys = $this->getFileManager()->keys();
+        $ids = array();
+        foreach($keys as $key) {
+            if(preg_match('/^'.$this->getHash().'/', $key)) {
+                $ids[] = str_replace($this->getHash(), '', $key);
+            }
+        }
+        if(empty($ids)) {
+            return 1;
+        }
+        
+        $maxId = max($ids);
+        
+        return $maxId + 1;
     }
 }
