@@ -10,6 +10,7 @@
 namespace Ringo\Bundle\PhpRedmonBundle\Worker;
 
 use Ringo\Bundle\PhpRedmonBundle\Model\Instance;
+use Ringo\Bundle\PhpRedmonBundle\Model\Info;
 use Ringo\Bundle\PhpRedmonBundle\Redis\Predis\Client;
 
 /**
@@ -72,11 +73,11 @@ class InstanceWorker
     /**
      * Get infos from server
      * 
-     * @return array
+     * @return \Ringo\Bundle\PhpRedmonBundle\Model\Info
      */
     public function getInfos()
     {
-        return $this->execute('info');
+        return new Info($this->execute('info'));
     }
     
     /**
@@ -118,11 +119,11 @@ class InstanceWorker
     /**
      * Get config
      * 
-     * @return array
+     * @return \Ringo\Bundle\PhpRedmonBundle\Model\Info
      */
     public function getConfiguration()
     {
-        return $this->execute('config', array('get','*'));
+        return new Info($this->execute('config', array('get','*')));
     }
     
     /**

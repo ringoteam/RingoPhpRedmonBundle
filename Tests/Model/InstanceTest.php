@@ -32,36 +32,7 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     {
     }
 
-    /**
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::addDatabase
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::getDatabases
-     */
-    public function testAddDatabase()
-    {
-        $this->assertEquals(new ArrayCollection(), $this->object->getDatabases());
-        $database = new Database();
-        $database->setId(1);
-        $this->object->addDatabase($database);
-        $this->assertEquals(1, sizeof($this->object->getDatabases()));
-        $databases = $this->object->getDatabases();
-        $this->assertEquals($database, $databases[0]);
-    }
-
-    /**
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::removeDatabase
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::getDatabases
-     */
-    public function testRemoveDatabase()
-    {
-        $this->assertEquals(new ArrayCollection(), $this->object->getDatabases());
-        $database = new Database();
-        $database->setId(1);
-        $this->object->addDatabase($database);
-        $this->assertEquals(1, sizeof($this->object->getDatabases()));
-        $this->object->removeDatabase($database);
-        $this->assertEquals(new ArrayCollection(), $this->object->getDatabases());
-    }
-
+   
     /**
      * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::addLog
      * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::getLogs
@@ -135,17 +106,6 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::getDatabase
-     */
-    public function testGetDatabase()
-    {
-        $this->assertNull($this->object->getDatabase(0));
-        $database = new Database();
-        $this->object->addDatabase($database);
-        $this->assertEquals($database, $this->object->getDatabase(0));
-    }
-
-    /**
      * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::getError
      * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::setError
      */
@@ -165,19 +125,6 @@ class InstanceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->object->isWorking());
         $this->object->setWorking(true);
         $this->assertEquals(true, $this->object->isWorking());
-    }
-
-    /**
-     * @covers Ringo\Bundle\PhpRedmonBundle\Model\Instance::setDatabases
-     */
-    public function testSetDatabases()
-    {
-        $databases = array(
-            new Database(),
-        );
-        $databases = new ArrayCollection($databases);
-        $this->object->setDatabases($databases);
-        $this->assertEquals($databases, $this->object->getDatabases());
     }
 
     /**

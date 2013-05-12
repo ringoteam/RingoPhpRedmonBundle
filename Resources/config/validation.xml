@@ -22,9 +22,4 @@
             </constraint>
         </property>
     </class>
-    <class name="Ringo\Bundle\PhpRedmonBundle\Model\Database">
-        <property name="name">
-            <constraint name="NotBlank"/>
-        </property>
-    </class>
 </constraint-mapping>

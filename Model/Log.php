@@ -34,12 +34,33 @@ class Log
     protected $createdAt;
     
     /**
-     * Datas
+     * Memory usage
      * 
-     * @var array 
+     * @var string 
      */
-    protected $datas;
+    protected $memory;
+
+    /**
+     * CPU usage
+     * 
+     * @var string
+     */
+    protected $cpu;
+
+    /**
+     * nbClients connected
+     * 
+     * @var int
+     */
+    protected $nbClients;
     
+    /**
+     * Instance
+     * 
+     * @var Snide\Redmon\Model\Instance
+     */
+    protected $instance;
+
     /**
      * Get ID
      * 
@@ -69,7 +90,7 @@ class Log
     {
         return $this->createdAt;
     }
-    
+
     /**
      * Set created date
      * 
@@ -78,26 +99,85 @@ class Log
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
-        $this->id = $createdAt->getTimestamp();
     }
     
     /**
-     * Get datas
+     * Get memory usage
      * 
-     * @return array
+     * @return string Amount of memory used
      */
-    public function getDatas()
+    public function getMemory()
     {
-        return $this->datas;
+        return $this->memory;
+    }
+
+    /**
+     * Set memory usage
+     * 
+     * @param string $memory Amount of memory used
+     */
+    public function setMemory($memory)
+    {
+        $this->memory = $memory;
+    }
+
+    /**
+     * Get cpu usage
+     * 
+     * @return string Amount of cpu used
+     */
+    public function getCpu()
+    {
+        return $this->cpu;
+    }
+
+    /**
+     * Set cpu usage
+     * 
+     * @param string $cpu Amount of cpu used
+     */
+    public function setCpu($cpu)
+    {
+        $this->cpu = $cpu;
+    }
+
+    /**
+     * Get nbClients
+     * 
+     * @return int nb clients connected
+     */
+    public function getNbClients()
+    {
+        return $this->nbClients;
+    }
+
+    /**
+     * Set nbClients
+     * 
+     * @param int $nbClients nb clients connected
+     */
+    public function setNbClients($nbClients)
+    {
+        $this->nbClients = $nbClients;
     }
     
     /**
-     * Set datas
+     * Get instance
      * 
-     * @param array $datas
+     * @return Instance 
      */
-    public function setDatas(array $datas = array())
+    public function getInstance()
     {
-        $this->datas = $datas;
+        return $this->instance;
+    }
+
+    /**
+     * Set instance
+     * 
+     * @param Instance $instance 
+     */
+    public function setInstance(Instance $instance)
+    {
+        $this->instance = $instance;
     }
 }

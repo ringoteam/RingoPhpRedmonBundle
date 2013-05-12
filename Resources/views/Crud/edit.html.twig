@@ -22,18 +22,6 @@
             {{ form_label(form.port) }}
             {{ form_widget(form.port) }}
         </div>
-        <span>Databases : <a href="#" class="del_database">Delete all databases</a></span>
-        <ul class="databases" data-prototype="{{ form_widget(form.databases.vars.prototype)|e }}">
-            {% for database in form.databases %}
-                <li>Database n° {{database.id.vars.value}} {{ form_row(database.name) }}</li>
-            {% endfor %}
-        </ul>
-        <span class="add_link">
-            <a href="#" class="add_database black">
-                <img class="pull-left" src="{{ asset('/bundles/ringophpredmon/images/add.png') }}" width="20"/>
-                <strong>Add a database</strong>
-            </a>
-        </span>
         <input class="btn" type="submit" value="Submit" />
     </form>
         

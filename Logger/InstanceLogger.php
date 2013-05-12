@@ -153,13 +153,11 @@ class InstanceLogger
         // If instance can be called
         if($this->worker->ping()) {
             $infos = $this->worker->getInfos();
-            $createdAt = new \DateTime();
-            $graphInfo = array();
-            $graphInfo['memory'] = $infos['Memory']['used_memory'];
             $log = new Log();
+            $log->setMemory($infos['Memory']['used_memory']);
+            $log->setCpu($infos['CPU']['used_cpu_sys']);
+            $log->setNbClients(sizeof($this->worker->getClients()));
             $log->setCreatedAt($createdAt);
-            // Log infos
-            $log->setDatas($graphInfo);
             // Add log
             $this->instance->addLog($log);
         }

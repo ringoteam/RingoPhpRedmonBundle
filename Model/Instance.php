@@ -49,13 +49,6 @@ class Instance
     protected $host;
     
     /**
-     * Databases
-     * 
-     * @var \Doctrine\Common\Collections\ArrayCollection  
-     */
-    protected $databases;
-    
-    /**
      * Logs
      * 
      * @var \Doctrine\Common\Collections\ArrayCollection  
@@ -75,27 +68,6 @@ class Instance
      * @var string 
      */
     protected $error;
-    
-    /**
-     * Add a database
-     * 
-     * @param \Ringo\Bundle\PhpRedmonBundle\Model\Database $database
-     */
-    public function addDatabase(Database $database)
-    {
-        $database->setId($this->getDatabases()->count());
-        $this->getDatabases()->add($database);
-    }
-    
-    /**
-     * Remove a database
-     * 
-     * @param \Ringo\Bundle\PhpRedmonBundle\Model\Database $database
-     */
-    public function removeDatabase(Database $database) 
-    {
-        $this->getDatabases()->removeElement($database);
-    }
     
     /**
      * Add a log
@@ -156,37 +128,7 @@ class Instance
     {
         return $this->port;
     }
-    
-    /**
-     * Get databases
-     * 
-     * @return \Doctrine\Common\Collections\ArrayCollection  
-     */
-    public function getDatabases()
-    {
-        if($this->databases == null) {
-            $this->databases = new ArrayCollection();
-        }
-        return $this->databases;
-    }
 
-    /**
-     * Get a database by ID
-     * 
-     * @param int $id
-     * @return null|\Ringo\Bundle\PhpRedmonBundle\Model\Database
-     */
-    public function getDatabase($id)
-    {
-        foreach($this->getDatabases() as $database) {
-            if($database->getId() == $id) {
-                return $database;
-            }
-        }
-        
-        return null;
-    }
-    
     /**
      * Get potential error message
      * 
@@ -259,16 +201,6 @@ class Instance
     public function setPort($port)
     {
         $this->port = $port;
-    }
-    
-    /**
-     * Set databases
-     * 
-     * @param \Doctrine\Common\Collections\ArrayCollection $databases
-     */
-    public function setDatabases(ArrayCollection $databases)
-    {
-        $this->databases = $databases;
     }
  
     /**

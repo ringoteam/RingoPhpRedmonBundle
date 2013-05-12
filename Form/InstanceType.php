@@ -34,13 +34,6 @@ class InstanceType extends AbstractType
         $builder->add('name', 'text');
         $builder->add('host', 'text');
         $builder->add('port', 'text');
-        
-        $builder->add('databases', 'collection', array(
-            'type' => new DatabaseType(),
-            'allow_add' => true,
-            'allow_delete' => true,
-            'by_reference' => false,
-        ));
     }
 
     /**
