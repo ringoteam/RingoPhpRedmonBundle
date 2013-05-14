@@ -17,16 +17,17 @@ namespace Ringo\Bundle\PhpRedmonBundle\Model;
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
-class Info implements \ArrayAccess
+class Info implements \ArrayAccess, \Iterator
 {
-	protected $container;
+    protected $container;
+    protected $index;
 
-	public function __construct(array $datas)
-	{
-		$this->container = $datas;
-	}
+    public function __construct(array $datas)
+    {
+        $this->container = $datas;
+    }
 
-	public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value) {
         if (is_null($offset)) {
             $this->container[] = $value;
         } else {
@@ -41,5 +42,41 @@ class Info implements \ArrayAccess
     }
     public function offsetGet($offset) {
         return isset($this->container[$offset]) ? $this->container[$offset] : '?';
+    }
+
+    public function rewind()
+    {
+        $this->index = 0;
+    }
+    public function current()
+    {
+        $k = array_keys($this->container);
+
+        return $this->container[$k[$this->index]] ? $this->container[$k[$this->index]] : '?';
+    }
+
+    public function key()
+    {
+        $k = array_keys($this->container);
+
+        return $k[$this->index];
+    }
+
+    public function next()
+    {
+        $k = array_keys($this->container);
+        if (isset($k[++$this->index])) {
+            $var = $this->container[$k[$this->index]];
+            return $var;
+        } else {
+            return false;
+        }
+    }
+
+    public function valid()
+    {
+        $k = array_keys($this->container);
+        
+        return isset($k[$this->index]);
     }
 }
