@@ -10,7 +10,7 @@ Redis monitoring Bundle
 ```json
 {
     "require": {
-        "knplabs/knp-paginator-bundle": "dev-master"
+        "ringoteam/phpredmon-bundle": "dev-master"
     }
 }
 ```
