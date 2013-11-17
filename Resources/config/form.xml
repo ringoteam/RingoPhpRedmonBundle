@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ringo_php_redmon.form.instance.name">ringo_php_redmon_instance_type</parameter>
+        <parameter key="ringo_php_redmon.form.database.name">ringo_php_redmon_database_type</parameter>
+        <parameter key="ringo_php_redmon.form.instance_type.class">Ringo\Bundle\PhpRedmonBundle\Form\InstanceType</parameter>
+        <parameter key="ringo_php_redmon.form.database_type.class">Ringo\Bundle\PhpRedmonBundle\Form\DatabaseType</parameter>
+    </parameters>
+    <services>
+
+        <service id="ringo_php_redmon.form.database_type" class="%ringo_php_redmon.form.database_type.class%">
+            <tag name="form.type" alias="%ringo_php_redmon.form.database.name%" />
+            <argument>%ringo_php_redmon.model.database.class%</argument>
+        </service>
+
+
+        <service id="ringo_php_redmon.form.instance_type" class="%ringo_php_redmon.form.instance_type.class%">
+            <tag name="form.type" alias="%ringo_php_redmon.form.instance.name%" />
+            <argument>%ringo_php_redmon.model.instance.class%</argument>
+            <argument type="service" id="ringo_php_redmon.form.database_type"/>
+        </service>
+    </services>
+</container>

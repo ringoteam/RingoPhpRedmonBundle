@@ -21,6 +21,24 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class DatabaseType extends AbstractType
 {
+
+    /**
+     * Class model
+     *
+     * @var string
+     */
+    protected $class;
+
+    /**
+     * Constructor
+     *
+     * @param $class
+     */
+    public function __construct($class)
+    {
+        $this->class = $class;
+    }
+
     /**
      * Build form
      *
@@ -42,7 +60,7 @@ class DatabaseType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Ringo\PhpRedmon\Model\Database',
+            'data_class' => $this->class,
         );
     }
 
@@ -52,6 +70,6 @@ class DatabaseType extends AbstractType
      */
     public function getName()
     {
-        return 'ringo_php_redmon_database';
+        return 'ringo_php_redmon_database_type';
     }
 }

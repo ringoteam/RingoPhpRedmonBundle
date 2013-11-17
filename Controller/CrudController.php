@@ -192,6 +192,9 @@ class CrudController extends BaseController
             $instance = $this->getManager()->createNew();
         }
         
-        return $this->createForm(new InstanceType(), $instance);
+        return $this->createForm(
+            $this->container->get('ringo_php_redmon.form.instance_type'),
+            $instance
+        );
     }
 }

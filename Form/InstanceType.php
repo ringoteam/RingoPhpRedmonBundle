@@ -23,6 +23,32 @@ use Symfony\Component\Form\FormBuilderInterface;
 class InstanceType extends AbstractType
 {
     /**
+     * Db type
+     *
+     * @var DatabaseType
+     */
+    protected $databaseType;
+
+    /**
+     * Class model
+     *
+     * @var string
+     */
+    protected $class;
+
+    /**
+     * Constructor
+     *
+     * @param $class
+     * @param $databaseType
+     */
+    public function __construct($class, $databaseType)
+    {
+        $this->databaseType = $databaseType;
+        $this->class = $class;
+    }
+
+    /**
      * Build form
      * 
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -35,7 +61,7 @@ class InstanceType extends AbstractType
         $builder->add('host', 'text');
         $builder->add('port', 'text');
         $builder->add('databases', 'collection', array(
-            'type' => new DatabaseType(),
+            'type' => $this->databaseType,
             'allow_add' => true,
             'required' => false,
             'allow_delete' => true,
@@ -52,16 +78,16 @@ class InstanceType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Ringo\PhpRedmon\Model\Instance',
+            'data_class' => $this->class,
         );
     }
-    
+
     /**
      * Get form name
      * @return string Form name
      */
     public function getName()
     {
-        return 'ringo_php_redmon_instance';
+        return 'ringo_php_redmon_instance_type';
     }
 }

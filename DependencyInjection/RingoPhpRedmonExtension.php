@@ -40,9 +40,11 @@ class RingoPhpRedmonExtension extends Extension
          $container->setParameter('ringo_php_redmon.log.days', $config['log']['days']);
          $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
          $loader->load('entity.xml');
+         $loader->load('form.xml');
          $loader->load('manager.xml');
          $loader->load('worker.xml');
          $loader->load('logger.xml');
+         $loader->load('model.xml');
     }
 
     /**
