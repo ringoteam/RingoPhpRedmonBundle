@@ -16,19 +16,26 @@
     {% block nav %}
         {% render "RingoPhpRedmonBundle:Main:navigation" with {'route': app.request.attributes.get('_route')} %}
     {% endblock %}
-            
+
     <div class="container-fluid">
         <div class="row">
             {% include 'RingoPhpRedmonBundle:Main:message.html.twig' %}
-           
-            <div class="span12">
+            {% block widget %}
+                <div class="span5 pull-right">
+                    <div class="well well-large add_link">
+                        <a class="black" href="{{ path('ringo_php_redmon_instance_new') }}"><img class="pull-left" src="{{ asset('/bundles/ringophpredmon/images/add.png') }}" width="20"/><strong>Add an instance</strong></a>
+                    </div>
+                    <div class="accordion" id="accordion2">
+                       {% render "RingoPhpRedmonBundle:Main:administration" %}
+                    </div>
+                </div>
+            {% endblock %}
+            <div class="span12 pull-right">
                 {% block main %}
 
-                {% endblock%}   
+                {% endblock%}
             </div>
-            {% block widget %}
-            {% endblock%}   
-                
+
         </div>
     </div>
 {% block javascript %}

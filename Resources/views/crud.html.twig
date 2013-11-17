@@ -20,8 +20,8 @@
     <div class="container-fluid">
         <div class="row">
             {% include 'RingoPhpRedmonBundle:Main:message.html.twig' %}
-           
-            <div class="span9">
+
+            <div class="span12">
                 {% block main %}
 
                 {% endblock%}   
@@ -34,7 +34,6 @@
 {% block javascript %}
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{{ asset('/bundles/ringophpredmon/js/bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('/bundles/ringophpredmon/js/phpredmon.js ') }}"></script>
 {% endblock %}
   </body>
 </html>

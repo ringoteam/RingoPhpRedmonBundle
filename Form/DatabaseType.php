@@ -15,16 +15,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * Class InstanceType
  *
- * Form for Redis instance
- * 
- * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
+ * Form for Redis database
+ *
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
-class InstanceType extends AbstractType
+class DatabaseType extends AbstractType
 {
     /**
      * Build form
-     * 
+     *
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array $options
      */
@@ -32,36 +31,27 @@ class InstanceType extends AbstractType
     {
         $builder->add('id', 'hidden');
         $builder->add('name', 'text');
-        $builder->add('host', 'text');
-        $builder->add('port', 'text');
-        $builder->add('databases', 'collection', array(
-            'type' => new DatabaseType(),
-            'allow_add' => true,
-            'required' => false,
-            'allow_delete' => true,
-            'by_reference' => false
-        ));
     }
 
     /**
      * Get form default options
-     * 
+     *
      * @param array $options
      * @return array Form options
      */
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Ringo\PhpRedmon\Model\Instance',
+            'data_class' => 'Ringo\PhpRedmon\Model\Database',
         );
     }
-    
+
     /**
      * Get form name
      * @return string Form name
      */
     public function getName()
     {
-        return 'ringo_php_redmon_instance';
+        return 'ringo_php_redmon_database';
     }
 }

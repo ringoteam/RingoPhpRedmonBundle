@@ -1,29 +1,58 @@
 {% extends 'RingoPhpRedmonBundle::crud.html.twig' %}
-
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('/bundles/ringophpredmon/js/phpredmon.form.js') }}" />
+{% endblock %}
 {% block main %}
     <h2>Create a Redis Instance</h2>
     
       
-    <form action="{{ path('ringo_php_redmon_instance_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_row(form.id) }}
-        {{ form_row(form._token) }}
-        <div class="field">
-            {{ form_errors(form.name) }}
-            {{ form_label(form.name) }}    
-            {{ form_widget(form.name) }}
-        </div>    
-        <div class="field">
-            {{ form_errors(form.host) }}
-            {{ form_label(form.host) }}    
-            {{ form_widget(form.host) }}
-        </div>
-        <div class="field">
-            {{ form_errors(form.port) }}
-            {{ form_label(form.port) }}
-            {{ form_widget(form.port) }}
-        </div>
-        <input class="btn" type="submit" value="Submit" />
-    </form>
+    <div class="span12">
+        <form action="{{ path('ringo_php_redmon_instance_create') }}" method="post" {{ form_enctype(form) }}>
+
+        <div class="span5">
+                <h3>Connection</h3>
+
+                {{ form_row(form.id) }}
+                {{ form_row(form._token) }}
+                <div class="field">
+                    {{ form_errors(form.name) }}
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="field">
+                    {{ form_errors(form.host) }}
+                    {{ form_label(form.host) }}
+                    {{ form_widget(form.host) }}
+                </div>
+                <div class="field">
+                    {{ form_errors(form.port) }}
+                    {{ form_label(form.port) }}
+                    {{ form_widget(form.port) }}
+                </div>
+            </div>
+            <div class="spans">
+
+                <h3>Databases</h3>
+            <span>
+                <a href="#" class="del_database black pull-right">Delete all <img src="{{ asset('/bundles/ringophpredmon/images/del.png') }}" width="10"/></a>
+            </span>
+
+                <div class="field">
+
+                    <ul class="databases" data-prototype="{{ form_widget(form.databases.vars.prototype)|e }}">
+                        {% for database in form.databases %}
+                            <li>{{ form_row(database.name) }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="#" class="add_database_link black pull-right">Add a database&nbsp;&nbsp;<img src="{{ asset('/bundles/ringophpredmon/images/add.png') }}" width="15"/></a>
+                </div>
+            </div>
+            <div class="span12">
+                <input class="btn submit-btn" type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
 {% endblock %}    
 
 {% block widget %}

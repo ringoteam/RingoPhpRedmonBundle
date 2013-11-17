@@ -78,7 +78,7 @@ class CrudController extends BaseController
 
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->bindRequest($request);
+            $form->bind($request);
             if ($form->isValid()) {
                 
                 $this->getManager()->create($form->getData());
@@ -135,7 +135,7 @@ class CrudController extends BaseController
         // Get request
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->bindRequest($request);
+            $form->bind($request);
             
             if ($form->isValid()) {
                 // Save instance

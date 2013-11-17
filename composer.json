@@ -22,7 +22,8 @@
     "require-dev": {
         "knplabs/knp-gaufrette-bundle": "*",
         "predis/predis": "dev-master",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "ringoteam/phpredmon-lib": "dev-master"
     },
     "autoload":     {
         "psr-0": {

@@ -1,16 +1,14 @@
 {% extends 'RingoPhpRedmonBundle::base.html.twig' %}
 
 {% block main %}
-   
-   
-        
+
 <div class="span5">
          <ul class="breadcrumb">
                    <li>Infos</li>
          </ul>
        <table class="table table-striped">
              <tr>
-                   <td>Version : </td> <td>{{infos.Server.redis_version}}</td>    
+                   <td>Version : </td> <td>{{infos.Server.redis_version}}</td>
              </tr> 
               <tr>
                    <td>Mode : </td> <td>{{infos.Server.redis_mode}}</td>    

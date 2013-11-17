@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="ringo_php_redmon.instance_manager" class="Ringo\Bundle\PhpRedmonBundle\Manager\InstanceManager" public="true">
+        <service id="ringo_php_redmon.instance_manager" class="Ringo\PhpRedmon\Manager\InstanceManager" public="true">
             <argument type="service" id="ringo_php_redmon.entity_manager" />
-            <argument>Ringo\Bundle\PhpRedmonBundle\Model\Instance</argument>
+            <argument>Ringo\PhpRedmon\Model\Instance</argument>
         </service>
     </services>
 </container>
