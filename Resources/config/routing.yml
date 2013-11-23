@@ -50,3 +50,19 @@ ringo_php_redmon_admin_flushdb:
 ringo_php_redmon_admin_flushall:
     pattern:   /admin/flush-all
     defaults:  { _controller: RingoPhpRedmonBundle:Admin:flushAll }
+
+ringo_php_redmon_search_index:
+    pattern:   /search
+    defaults: { _controller: RingoPhpRedmonBundle:Search:index }
+
+ringo_php_redmon_search_result:
+    pattern:   /search/result
+    defaults:  { _controller: RingoPhpRedmonBundle:Search:index }
+    requirements:
+        _method:  POST
+
+ringo_php_redmon_search_remove:
+    pattern:   /search/remove
+    defaults:  { _controller: RingoPhpRedmonBundle:Search:remove }
+    requirements:
+        _method:  POST

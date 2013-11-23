@@ -1,0 +1,88 @@
+{% extends 'RingoPhpRedmonBundle::crud.html.twig' %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('/bundles/ringophpredmon/js/phpredmon.search.js') }}" />
+{% endblock %}
+
+{% block main %}
+    <h2>Search</h2>
+    <form action="{{ path('ringo_php_redmon_search_result') }}" method="post">
+        <span class="span">
+            <div class="field">
+                <label for="search_key">Keyword : </label><input id="search_key" type="text" name="key" value="{{ key }}" />
+            </div>
+        </span>
+        <span class="span">
+            <div class="field">
+                <label for="search_db">Database : </label><select name="database">
+                    <option {% if db == '-1' %} selected="selected" {% endif %} value="-1">All</option>
+                    {% for database in instance.databases %}
+                        <option value="{{ database.id }}" {% if db == database.id %} selected="selected" {% endif %}>{{ database.name }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </span>
+        <span class="span">
+            <div class="field">
+                <label>&nbsp;</label>
+                <input type="submit" class="btn" value="search" />
+            </div>
+        </span>
+    </form>
+
+    {% if results %}
+    <span class="span10">
+        <form name="keys_remove_form" method="post" action="{{ path('ringo_php_redmon_search_remove') }}">
+            <input type="hidden" name="database" value="{{ db }}" />
+            <div class="accordion" id="search_result">
+                <table  class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Key</th>
+                            <th>Weight</th>
+                            <th>Expire at</th>
+                            <th>Action(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="keys[]" value="{{ result.key }}" class="pull-left" />
+                            </td>
+                            <td>{{ result.key }}</td>
+
+                            <td>{{ result.weight }}</td>
+                            <td>{{ result.expireAt }}</td>
+                            <td>
+                                <span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ result.key }}">View</button></span>
+                                <div id="{{ result.key }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Value" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h3 id="myModalLabel">Value for {{ result.key }}</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ result.value }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a class="select" href="javascript:void(0)">Check / Uncheck all items</a>
+            <span><input type="submit" value="Remove" class="btn pull-right" /></span>
+        </form>
+    </span>
+    {% endif %}
+
+{% endblock %}

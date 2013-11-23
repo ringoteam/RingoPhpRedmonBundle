@@ -15,11 +15,13 @@
                 <li {% if route == 'ringo_php_redmon_instance_configuration' %}class="active"{% endif %}><a href="{{ path('ringo_php_redmon_instance_configuration') }}">Configuration</a></li>
                 <!-- <li><a href="">Console</a></li> -->
                 <li {% if route == 'ringo_php_redmon_instances' %}class="active"{% endif %}><a href="{{ path('ringo_php_redmon_instances') }}">Administration</a></li>
+                <li {% if route == 'ringo_php_redmon_search_index' or route == 'ringo_php_redmon_search_result' or route == 'ringo_php_redmon_search_remove' %}class="active"{% endif %}><a href="{{ path('ringo_php_redmon_search_index') }}">Search</a></li>
             {% else %}
                 <li class="disabled"><a href="#">Clients</a></li>
                 <li class="disabled"><a href="#">Configuration</a></li>
              <!--   <li class="disabled"><a href="#">Console</a></li> -->
                 <li><a href="{{ path('ringo_php_redmon_instances') }}">Administration</a></li>
+                <li class="disabled"><a href="#">Search</a></li>
             {% endif %}
           </ul>
           <ul class="nav pull-right">
