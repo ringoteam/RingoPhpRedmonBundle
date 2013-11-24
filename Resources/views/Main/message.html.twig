@@ -1,22 +1,22 @@
 <div class="container">
-    {% if app.session.hasFlash('notice') %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ app.session.flash('notice') }}
+            {{ flashMessage }}
         </div>
-    {% endif %}
+    {% endfor %}
 
-    {% if app.session.hasFlash('success') %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ app.session.flash('success') }}
+            {{ flashMessage }}
         </div>
-    {% endif %}
+    {% endfor %}
 
-    {% if app.session.hasFlash('error') %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
         <div class="alert alert-error">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ app.session.flash('error') }}
+            {{ flashMessage }}
         </div>
-    {% endif %}
+    {% endfor %}
 </div>

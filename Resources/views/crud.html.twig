@@ -14,7 +14,7 @@
  
     <body>
     {% block nav %}
-        {% render "RingoPhpRedmonBundle:Main:navigation" with {'route': app.request.attributes.get('_route')} %}
+        {% render(controller("RingoPhpRedmonBundle:Main:navigation",{'route': app.request.attributes.get('_route')})) %}
     {% endblock %}
             
     <div class="container-fluid">
