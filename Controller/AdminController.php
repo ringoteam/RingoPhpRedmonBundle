@@ -33,9 +33,9 @@ class AdminController extends BaseController
         try {
             $this->getWorker()->execute('flushAll');
             
-            $this->get('session')->setFlash('success', 'Flush ALL executed successfully');
+            $this->get('session')->getFlashBag()->add('success', 'Flush ALL executed successfully');
         }catch(\Exception $e) {
-            $this->get('session')->setFlash('error', 'We have encountered an error : '.$e->getMessage());
+            $this->get('session')->getFlashBag()->add('error', 'We have encountered an error : '.$e->getMessage());
         }
         
         return new RedirectResponse($this->generateUrl('ringo_php_redmon'));
@@ -52,9 +52,9 @@ class AdminController extends BaseController
         try {
             $worker = $this->getWorker()->flushDB($id);
             
-            $this->get('session')->setFlash('success', 'Flush DB on '.$id.' executed successfully');
+            $this->get('session')->getFlashBag()->add('success', 'Flush DB on '.$id.' executed successfully');
         }catch(\Exception $e) {
-            $this->get('session')->setFlash('success', 'Une erreur s\'est produite : '.$e->getMessage());
+            $this->get('session')->getFlashBag()->add('success', 'Une erreur s\'est produite : '.$e->getMessage());
         }
         
         return new RedirectResponse($this->generateUrl('ringo_php_redmon'));

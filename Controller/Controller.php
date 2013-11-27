@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 /**
  * Class Controller
  * 
- * Contains some usefull methods for childrend controllers
+ * Contains some usefull methods for children controllers
  * 
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>

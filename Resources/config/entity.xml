@@ -7,7 +7,7 @@
     <services>
         <service id="ringo_php_redmon.entity_manager" class="Ringo\PhpRedmon\File\Repository\InstanceRepository" public="false">
             <argument type="service" id="gaufrette.phpredmon_filesystem" />
-            <argument>%%ringo_php_redmon.model.instance%</argument>
+            <argument>%ringo_php_redmon.model.instance%</argument>
         </service>
     </services>
 </container>

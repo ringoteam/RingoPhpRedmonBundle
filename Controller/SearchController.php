@@ -31,7 +31,7 @@ class SearchController extends BaseController
             $keys = $this->getWorker()->keys($key, $db);
 
             if(empty($keys)) {
-                $this->get('session')->setFlash('notice', 'No result found');
+                $this->get('session')->getFlashBag()->add('notice', 'No result found');
             }else if(is_array($keys)) {
                 foreach($keys as $k) {
                     $value = $this->getWorker()->get($k, $db);
@@ -65,9 +65,9 @@ class SearchController extends BaseController
         if(is_array($keys) && !empty($keys)) {
             try {
                 $this->getWorker()->delete($keys, $db);
-                $this->get('session')->setFlash('success', 'Keys was deleted successfully');
+                $this->get('session')->getFlashBag()->add('success', 'Keys was deleted successfully');
             }catch(\Exception $e) {
-                $this->get('session')->setFlash('error', $e->getMessage());
+                $this->get('session')->getFlashBag()->add('error', $e->getMessage());
             }
         }
 

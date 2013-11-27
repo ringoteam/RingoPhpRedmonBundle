@@ -82,11 +82,11 @@ class CrudController extends BaseController
             if ($form->isValid()) {
                 
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('success', 'Instance Redis created successfully');
+                $this->get('session')->getFlashBag()->add('success', 'Instance Redis created successfully');
 
                 return new RedirectResponse($this->generateUrl('ringo_php_redmon'));
             }else {
-                $this->get('session')->setFlash('error', 'Some errors have been found');
+                $this->get('session')->getFlashBag()->add('error', 'Some errors have been found');
 
             }
         }
@@ -140,11 +140,11 @@ class CrudController extends BaseController
             if ($form->isValid()) {
                 // Save instance
                 $this->getManager()->create($form->getData());
-                $this->get('session')->setFlash('success', 'Instance Redis updated successfully');
+                $this->get('session')->getFlashBag()->add('success', 'Instance Redis updated successfully');
 
                 return new RedirectResponse($this->generateUrl('ringo_php_redmon'));
             }else {
-                $this->get('session')->setFlash('error', 'Some errors found');
+                $this->get('session')->getFlashBag()->add('error', 'Some errors found');
             }
         }
         
@@ -168,9 +168,9 @@ class CrudController extends BaseController
         $instance = $this->getManager()->find($id);
         if($instance) {
             $this->getManager()->delete($instance);
-            $this->get('session')->setFlash('success', 'Instance Redis has been deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'Instance Redis has been deleted successfully');
         }else {
-            $this->get('session')->setFlash('error', 'This instance does not exist');
+            $this->get('session')->getFlashBag()->add('error', 'This instance does not exist');
         }
         
         return new RedirectResponse($this->generateUrl('ringo_php_redmon'));

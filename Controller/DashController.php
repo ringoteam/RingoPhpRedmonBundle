@@ -108,12 +108,12 @@ class DashController extends BaseController
         if($instance) {
             $this->getRequest()->getSession()->set('instance', $instance);
             if($this->getWorker()) {
-                $this->get('session')->setFlash('success', 'Instance '.$instance->getName().' selected');
+                $this->get('session')->getFlashBag()->add('success', 'Instance '.$instance->getName().' selected');
             }else {
-                $this->get('session')->setFlash('error', 'Instance '.$instance->getName().' cannot be selected');
+                $this->get('session')->getFlashBag()->add('error', 'Instance '.$instance->getName().' cannot be selected');
             }
         }else {
-            $this->get('session')->setFlash('error', 'This instance does not exist');
+            $this->get('session')->getFlashBag()->add('error', 'This instance does not exist');
         }
         
         return new RedirectResponse($this->generateUrl('ringo_php_redmon'));
