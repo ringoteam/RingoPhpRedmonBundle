@@ -19,6 +19,11 @@ use Ringo\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
  */
 class SearchController extends BaseController
 {
+    /**
+     * Search index action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $results = array();

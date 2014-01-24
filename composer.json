@@ -15,15 +15,15 @@
             "email":    "pascal.denis.75@gmail.com"
         }
     ],
-    "require":      {
+    "require":
+    {
+        "php": ">=5.3.3",
         "knplabs/knp-gaufrette-bundle": "*",
-        "predis/predis": "dev-master"
+        "predis/predis": "v0.8.5",
+        "ringoteam/phpredmon-lib": "0.9.1"
     },
     "require-dev": {
-        "knplabs/knp-gaufrette-bundle": "*",
-        "predis/predis": "dev-master",
-        "phpunit/phpunit": "3.7.*",
-        "ringoteam/phpredmon-lib": "dev-master"
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload":     {
         "psr-0": {

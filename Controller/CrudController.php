@@ -9,7 +9,7 @@
 
 namespace Ringo\Bundle\PhpRedmonBundle\Controller;
 
-use Ringo\Bundle\PhpRedmonBundle\Form\InstanceType;
+use Ringo\PhpRedmon\Model\Instance;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ringo\Bundle\PhpRedmonBundle\Controller\Controller as BaseController;
 
@@ -185,8 +185,14 @@ class CrudController extends BaseController
     {
         return 'RingoPhpRedmonBundle:Crud:';
     }
-    
-    public function getForm($instance = null)
+
+    /**
+     * Create Form instance
+     *
+     * @param Instance $instance
+     * @return \Symfony\Component\Form\Form
+     */
+    protected function getForm(Instance $instance = null)
     {
         if($instance == null) {
             $instance = $this->getManager()->createNew();

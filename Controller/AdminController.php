@@ -50,7 +50,7 @@ class AdminController extends BaseController
     public function flushDbAction($id)
     {
         try {
-            $worker = $this->getWorker()->flushDB($id);
+            $this->getWorker()->flushDB($id);
             
             $this->get('session')->getFlashBag()->add('success', 'Flush DB on '.$id.' executed successfully');
         }catch(\Exception $e) {

@@ -26,7 +26,7 @@ class Controller extends BaseController
      * 
      * @return mixed
      */
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('ringo_php_redmon.instance_manager');
     }
@@ -36,7 +36,7 @@ class Controller extends BaseController
      * 
      * @return mixed
      */
-    public function getCurrentInstance()
+    protected function getCurrentInstance()
     {
         $instance = $this->getRequest()->getSession()->get('instance');
         
